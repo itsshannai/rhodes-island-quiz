@@ -7,14 +7,16 @@
 <meta name="description" content="24 道日常性格题，从 28 位明日方舟干员中找出和你最接近的一位。">
 <title>罗德岛入职档案 · 明日方舟同人测试</title>
 <style>
-@font-face{font-family:Rhodes Sans;src:url('rhodes-sans.woff2') format('woff2');font-weight:100 900;font-display:swap}
-@font-face{font-family:Rhodes Display;src:url('rhodes-display.woff2') format('woff2');font-weight:600 700;font-display:swap}
+@font-face{font-family:Rhodes Sans;src:url('rhodes-sans.woff2?v=source-han') format('woff2');font-weight:250 900;font-display:swap}
+@font-face{font-family:Rhodes Display;src:url('rhodes-display.woff2') format('woff2');font-weight:200 700;font-display:swap}
+@font-face{font-family:Bender;src:url('rhodes-numbers.woff2') format('woff2');font-weight:400;font-display:swap}
 
 :root{
   color-scheme:dark;
   --bg:#0b1118;--ink:#f5f7f8;--muted:#b4c2cc;
   --line:#364652;--cyan:#7ee6fc;--signal:#f5f7f8;
   --display:"Rhodes Display","Arial Narrow",sans-serif;
+  --numbers:Bender,var(--display);
   font-family:"Rhodes Sans","PingFang SC","Microsoft YaHei",sans-serif;
 }
 *{box-sizing:border-box}
@@ -35,7 +37,7 @@ h1,h2,h3,p,figure,blockquote{margin:0}
   min-height:60px;display:flex;align-items:center;justify-content:space-between;gap:10px;
   border-bottom:1px solid var(--line);
 }
-.wordmark{display:flex;align-items:center;gap:11px;font-size:.94rem;font-weight:800;letter-spacing:.055em}
+.wordmark{display:flex;align-items:center;gap:11px;font-size:.94rem;font-weight:700;letter-spacing:.035em}
 .emblem{display:block;width:42px;height:42px;flex:none;object-fit:contain}
 .fan,.site-foot{color:var(--muted);font-size:.77rem}
 .fan{white-space:nowrap}
@@ -46,15 +48,14 @@ h1,h2,h3,p,figure,blockquote{margin:0}
 main{min-height:calc(100svh - 115px);padding:18px 0 40px}
 .action,.secondary,.art-action{
   display:inline-grid;place-items:center;min-height:49px;padding:10px 17px;
-  border:1px solid var(--line);font-weight:750;
+  border:1px solid var(--line);font-weight:700;
 }
 .action{background:var(--ink);border-color:var(--ink);color:#0c141a}
 .action:hover:not(:disabled){background:var(--cyan);border-color:var(--cyan)}
 .secondary,.art-action{color:var(--ink);background:#101820ea}
 .secondary:hover:not(:disabled),.art-action:hover{border-color:var(--cyan)}
-.kicker,.counter,.operator-code,.match strong,.rank-list strong{
-  font-family:var(--display);font-weight:650;letter-spacing:.095em;
-}
+.kicker,.operator-code{font-family:var(--display);font-weight:500;letter-spacing:.095em}
+.counter,.match strong,.rank-list strong{font-family:var(--numbers);font-weight:400;font-variant-numeric:tabular-nums}
 .kicker,.counter{color:var(--cyan);font-size:.83rem}
 
 .intro{
@@ -78,8 +79,8 @@ main{min-height:calc(100svh - 115px);padding:18px 0 40px}
 }
 .intro-copy{width:min(100%,570px);padding:clamp(26px,5vw,68px)}
 .intro h1{
-  font-size:clamp(2.9rem,6.1vw,5.2rem);font-weight:900;line-height:1.05;
-  letter-spacing:-.075em;margin:12px 0 18px;text-wrap:balance;
+  font-size:clamp(2.9rem,6.1vw,5.2rem);font-weight:700;line-height:1.12;
+  letter-spacing:-.025em;margin:12px 0 18px;text-wrap:balance;
 }
 .intro .lead{max-width:33ch;color:#e1e8ed;font-size:1rem;line-height:1.65}
 .intro .action{min-width:185px;margin-top:23px}
@@ -89,7 +90,7 @@ main{min-height:calc(100svh - 115px);padding:18px 0 40px}
   width:min(100%,690px);min-height:calc(100svh - 157px);margin:7px auto 0;
   display:flex;flex-direction:column;
 }
-.progress-row{display:flex;align-items:center;justify-content:space-between;padding:11px 0;font-weight:720}
+.progress-row{display:flex;align-items:center;justify-content:space-between;padding:11px 0;font-weight:500}
 .counter{font-size:1.15rem}
 progress{appearance:none;width:100%;height:3px;border:0;display:block;background:var(--line)}
 progress::-webkit-progress-bar{background:var(--line)}
@@ -97,7 +98,7 @@ progress::-webkit-progress-value{background:var(--cyan)}
 progress::-moz-progress-bar{background:var(--cyan)}
 .quiz form{display:flex;flex:1;flex-direction:column}
 fieldset{padding:0;border:0;margin:30px 0 20px;min-width:0}
-legend{padding:0;margin-bottom:16px;font-size:clamp(1.32rem,4.7vw,2.12rem);font-weight:800;line-height:1.37;text-wrap:pretty}
+legend{padding:0;margin-bottom:16px;font-size:clamp(1.32rem,4.7vw,2.12rem);font-weight:700;line-height:1.45;text-wrap:pretty}
 legend:focus,h1:focus{outline:none}
 #choices{border-top:1px solid var(--line)}
 .choice{
@@ -140,8 +141,8 @@ legend:focus,h1:focus{outline:none}
 }
 .plate-name .kicker{letter-spacing:.04em}
 .archive-plate h1{
-  margin:2px 0 4px;font-size:clamp(2.25rem,9vw,6.1rem);font-weight:900;
-  line-height:1.06;letter-spacing:-.07em;overflow-wrap:break-word;
+  margin:2px 0 4px;font-size:clamp(2.25rem,9vw,6.1rem);font-weight:700;
+  line-height:1.12;letter-spacing:-.025em;overflow-wrap:break-word;
 }
 .operator-code{color:#d3e2ea;text-transform:uppercase;font-size:clamp(.9rem,3.5vw,1.2rem)}
 .operator-faction{margin-top:5px;color:#e3edf1;font-size:.84rem;line-height:1.35;overflow-wrap:anywhere}
@@ -155,11 +156,11 @@ legend:focus,h1:focus{outline:none}
   display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;
   gap:clamp(16px,4vw,52px);padding:clamp(18px,3.8vw,44px);
 }
-.quote{font-size:1.18rem;line-height:1.45;font-weight:790}
+.quote{font-size:1.18rem;line-height:1.45;font-weight:700}
 .hero-copy{color:var(--muted);line-height:1.72;margin-top:6px}
 .hero-text .profile-copy{grid-column:1;grid-row:1}
 .voice{grid-column:2;grid-row:1;border-left:2px solid var(--cyan);padding:2px 0 2px 13px}
-.voice p{font-size:1.08rem;font-weight:690;line-height:1.6}
+.voice p{font-size:1.08rem;font-weight:600;line-height:1.6}
 .voice cite{display:block;margin-top:6px;font-size:.79rem;font-style:normal}
 
 .data-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:34px;margin-top:19px}
@@ -844,11 +845,12 @@ async function saveCard(winner, score, voiceLine, ranking, reasons) {
     setText(27,700,accent);
     context.fillText('罗德岛入职档案 / 干员匹配',left,48);
     context.fillRect(left,619,5,85);
-    setText(81,900,ink);
+    setText(81,700,ink);
     context.fillText(winner.name,left+18,675,530);
-    context.font = '700 25px "Rhodes Display", sans-serif';
+    context.font = '500 25px "Rhodes Display", sans-serif';
     context.fillText(winner.code.toUpperCase(),left+20,710,530);
-    setText(48,800,accent);
+    context.font = '400 48px Bender, "Rhodes Display", sans-serif';
+    context.fillStyle = accent;
     context.textAlign = 'right';
     context.fillText(score,right,661);
     setText(20,650,muted);

@@ -16,7 +16,7 @@
 
 干员精二立绘版权属于鹰角网络及其相关权利人。人物行为解读参考 [PRTS Wiki](https://prts.wiki/)，结果页可查对应档案。首页和结果页的科幻场景由本项目生成。首页采用 [近卫阿米娅精二立绘](https://prts.wiki/w/文件:立绘_阿米娅(近卫)_2.png)。结果页语音短句来自 [国服游戏语音表](https://github.com/Kengxxiao/ArknightsGameData/blob/master/zh_CN/gamedata/excel/charword_table.json)。
 
-字体为 Noto Sans SC（思源黑体同源）、Noto Serif SC 和 Oswald 的网页子集，采用 SIL Open Font License；授权文本见 [FONT-LICENSES.txt](FONT-LICENSES.txt)。精二立绘按网页展示需求转为 WebP，保留透明背景。
+中文使用 Adobe 思源黑体，英文代号使用 Oswald，题号与匹配指数使用 Bender。字体由本站托管，采用 SIL Open Font License，授权文本见 [FONT-LICENSES.txt](FONT-LICENSES.txt)。精二立绘按网页展示需求转为 WebP，保留透明背景。
 
 - [拉普兰德 · 精二立绘来源](https://raw.githubusercontent.com/Aceship/Arknight-Images/main/characters/char_140_whitew_2.png)
 - [傀影 · 精二立绘来源](https://raw.githubusercontent.com/Aceship/Arknight-Images/main/characters/char_250_phatom_2.png)
