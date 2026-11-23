@@ -36,10 +36,7 @@ h1,h2,h3,p,figure,blockquote{margin:0}
   border-bottom:1px solid var(--line);
 }
 .wordmark{display:flex;align-items:center;gap:11px;font-size:.94rem;font-weight:800;letter-spacing:.055em}
-.emblem{
-  width:21px;height:23px;flex:none;background:var(--ink);
-  clip-path:polygon(50% 0,100% 92%,80% 92%,50% 36%,20% 92%,0 92%);
-}
+.emblem{display:block;width:42px;height:42px;flex:none;object-fit:contain}
 .fan,.site-foot{color:var(--muted);font-size:.77rem}
 .fan{white-space:nowrap}
 .site-foot{
@@ -187,10 +184,24 @@ legend:focus,h1:focus{outline:none}
 .insight p{color:#d4dce2;line-height:1.62;margin-top:4px}
 .more-traits{margin-top:3px}
 .more-traits summary{padding:12px 0;min-height:44px;color:var(--cyan);font-size:.9rem}
-.traitlist{display:grid;gap:8px;border-top:1px solid var(--line);padding-top:10px}
-.trait{font-size:.89rem;padding-bottom:8px;border-bottom:1px solid var(--line)}
-.trait:last-child{border:0}
-.trait p{color:var(--muted);margin-top:3px;line-height:1.55}
+.trait-legend{display:flex;gap:6px 18px;flex-wrap:wrap;color:var(--muted);font-size:.84rem;padding:3px 0 12px}
+.trait-legend span{display:inline-flex;gap:7px;align-items:center}
+.traitlist{display:grid;gap:8px}
+.trait{min-width:0;padding:10px 12px;background:#111a22;border:1px solid var(--line)}
+.trait h3{font-size:.9rem;line-height:1.35}
+.trait-track{position:relative;height:27px;margin-inline:5px}
+.trait-track::before,.trait-gap{position:absolute;top:50%;height:2px;transform:translateY(-50%)}
+.trait-track::before{content:"";inset-inline:0;background:#627180}
+.trait-gap{left:min(var(--you),var(--operator));width:calc(max(var(--you),var(--operator)) - min(var(--you),var(--operator)));background:var(--cyan)}
+.trait-tick{position:absolute;left:50%;top:50%;width:1px;height:12px;background:#728695;transform:translate(-50%,-50%)}
+.trait-marker{display:block;width:9px;height:9px;flex:none}
+.trait-marker.you{background:var(--signal);border-radius:50%}
+.trait-marker.operator{background:var(--cyan);rotate:45deg}
+.trait-track .trait-marker{position:absolute;translate:-50% -50%}
+.trait-track .you{left:var(--you);top:calc(50% - 6px)}
+.trait-track .operator{left:var(--operator);top:calc(50% + 6px)}
+.trait-poles{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:.81rem;line-height:1.35}
+.trait-poles span:last-child{text-align:right}
 .rank-list{list-style:none;margin:0;padding:0;display:grid;gap:11px}
 .rank-list li{display:grid;grid-template-columns:minmax(5.2em,auto) 1fr 3.25em;align-items:center;gap:9px;font-size:.92rem}
 .rank-list li strong{text-align:right;letter-spacing:.03em}
@@ -275,14 +286,14 @@ dialog::backdrop{background:#070b0ee8}
 </style>
 </head>
 <body>
-<header class="frame site-head"><span class="wordmark"><i class="emblem" aria-hidden="true"></i>罗德岛入职档案</span><span class="fan">非官方同人测试</span></header>
+<header class="frame site-head"><span class="wordmark"><img class="emblem" src="rhodes-island-emblem.png" alt="" width="42" height="42">罗德岛入职档案</span><span class="fan">非官方同人测试</span></header>
 <main class="frame">
   <section class="intro" id="intro">
     <div class="intro-art"><img class="intake-amiya" src="intake-guard.webp" alt="近卫阿米娅的精二立绘，冷蓝剑光环绕人物" width="1240" height="1240" fetchpriority="high"></div>
     <div class="intro-copy">
       <p class="kicker">RHODES ISLAND / INTAKE FILE</p>
-      <h1>你最像哪位<br>罗德岛干员？</h1>
-      <p class="lead">你刚登上罗德岛。夜宵桌上有个空位，靠港还有半天。遇到这些小事，选你平时最可能做的那一件。</p>
+      <h1>登舰之后，<br>你会是谁？</h1>
+      <p class="lead">灯还亮着，夜宵桌上还有一个空位。遇到这些小事，你会怎么选？答完后，罗德岛会从 28 份干员档案里，找出与你最接近的一份。</p>
       <button type="button" class="action" id="start">开始测试</button>
       <small>24 道情境题 · 约 4 分钟 · 28 位干员</small>
     </div>
@@ -563,8 +574,12 @@ function comparisonRows(totals, profile) {
     const operatorValue = profile[i] * 4;
     return {
       label,
+      lower,
+      upper,
       you: describe(totals[i], lower, upper),
       operator: describe(operatorValue, lower, upper),
+      youPosition: asPercent(totals[i]),
+      operatorPosition: asPercent(operatorValue),
       gap: Math.abs(totals[i] - operatorValue),
       stronger: Math.abs(totals[i]) > Math.abs(operatorValue) ? '你' : '干员',
     };
@@ -598,8 +613,15 @@ function comparisonPanel(totals, profile, name) {
       ).join('')}</div>
       <details class="more-traits">
         <summary>展开六项对照</summary>
+        <p class="trait-legend"><span><i class="trait-marker you" aria-hidden="true"></i>你</span><span><i class="trait-marker operator" aria-hidden="true"></i>${name}</span></p>
         <div class="traitlist">${rows.map(row => `<div class="trait">
-          <strong>${row.label}</strong><p>你 · ${row.you}<br>${name} · ${row.operator}</p></div>`
+          <h3>${row.label}</h3>
+          <div class="trait-track" role="img" aria-label="你倾向${row.you}，${name}倾向${row.operator}。" style="--you:${row.youPosition}%;--operator:${row.operatorPosition}%">
+            <span class="trait-tick" aria-hidden="true"></span><span class="trait-gap" aria-hidden="true"></span>
+            <span class="trait-marker you" aria-hidden="true"></span><span class="trait-marker operator" aria-hidden="true"></span>
+          </div>
+          <p class="trait-poles"><span>${row.lower}</span><span>${row.upper}</span></p>
+        </div>`
         ).join('')}</div>
       </details>
     </section>`;

@@ -12,6 +12,8 @@
 
 ## 素材
 
+页眉使用游戏中的[罗德岛徽标](https://prts.wiki/w/文件:Logo_罗德岛.png)，图片版权归鹰角网络及相关权利人。
+
 干员精二立绘版权属于鹰角网络及其相关权利人。人物行为解读参考 [PRTS Wiki](https://prts.wiki/)，结果页可查对应档案。首页和结果页的科幻场景由本项目生成。首页采用 [近卫阿米娅精二立绘](https://prts.wiki/w/文件:立绘_阿米娅(近卫)_2.png)。结果页语音短句来自 [国服游戏语音表](https://github.com/Kengxxiao/ArknightsGameData/blob/master/zh_CN/gamedata/excel/charword_table.json)。
 
 字体为 Noto Sans SC（思源黑体同源）、Noto Serif SC 和 Oswald 的网页子集，采用 SIL Open Font License；授权文本见 [FONT-LICENSES.txt](FONT-LICENSES.txt)。精二立绘按网页展示需求转为 WebP，保留透明背景。
