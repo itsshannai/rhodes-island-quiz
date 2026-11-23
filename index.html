@@ -3,187 +3,273 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#111417">
+<meta name="theme-color" content="#0b1118">
 <meta name="description" content="24 道日常性格题，从 20 位明日方舟干员中找出和你最接近的一位。">
 <title>罗德岛入职档案 · 明日方舟同人测试</title>
 <style>
 @font-face{font-family:Rhodes Sans;src:url('rhodes-sans.woff2') format('woff2');font-weight:100 900;font-display:swap}
-@font-face{font-family:Rhodes Serif;src:url('rhodes-serif.woff2') format('woff2');font-weight:700;font-display:swap}
 @font-face{font-family:Rhodes Display;src:url('rhodes-display.woff2') format('woff2');font-weight:600 700;font-display:swap}
 
-:root{color-scheme:dark;--bg:#111417;--sheet:#1a1e22;--sheet-dark:#14181b;--ink:#f4f2e9;--muted:#bec5ca;--line:#39434a;--signal:#f6cd67;--cyan:#8cddf2;--mono:"Rhodes Display",ui-monospace,Consolas,monospace;font-family:"Rhodes Sans","PingFang SC","Microsoft YaHei",sans-serif}
+:root{
+  color-scheme:dark;
+  --bg:#0b1118;--ink:#f5f7f8;--muted:#b4c2cc;
+  --line:#364652;--cyan:#7ee6fc;--signal:#f5f7f8;
+  --display:"Rhodes Display","Arial Narrow",sans-serif;
+  font-family:"Rhodes Sans","PingFang SC","Microsoft YaHei",sans-serif;
+}
 *{box-sizing:border-box}
-body{margin:0;background:#111920;color:var(--ink)}
-body::before{content:"";position:fixed;inset:-18px;z-index:-1;pointer-events:none;background:linear-gradient(135deg,#101924af,#0f171fce),url('intake-prism.webp') center 29%/cover;filter:blur(17px)}
-button,summary{font:inherit;cursor:pointer}
-button:disabled{cursor:default;opacity:.48}
-button:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
-a{color:var(--cyan)}
-h1,h2,h3,p,figure{margin:0}
 [hidden]{display:none!important}
-.frame{width:min(calc(100% - 56px),1100px);margin-inline:auto}
-.site-head{min-height:61px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line)}
-.wordmark{display:flex;align-items:center;gap:10px;font-size:.94rem;font-weight:790;letter-spacing:.06em}
-.emblem{width:16px;height:16px;border:1px solid var(--cyan);transform:rotate(45deg);display:grid;place-items:center}
-.emblem::after{content:"";height:6px;width:6px;background:var(--cyan)}
-.fan{font-size:.72rem;color:var(--muted);white-space:nowrap}
-.site-foot{display:flex;gap:8px 16px;flex-wrap:wrap;justify-content:space-between;border-top:1px solid var(--line);padding:16px 0 max(18px,env(safe-area-inset-bottom));color:var(--muted);font-size:.75rem}
-main{min-height:calc(100svh - 117px);padding:22px 0 46px}
-.action,.secondary{display:inline-grid;place-items:center;min-height:49px;padding:10px 19px;border:1px solid var(--line);font-weight:760}
-.action{background:var(--signal);border-color:var(--signal);color:#171b1d}
-.action:not(:disabled):hover{background:#ffe49e}
-.secondary{color:var(--ink);background:var(--sheet-dark)}
-.secondary:not(:disabled):hover{border-color:var(--cyan)}
-.kicker,.counter,.operator-code{font:650 .8rem var(--mono);letter-spacing:.11em}
-.kicker,.counter{color:var(--cyan)}
-.intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:clamp(540px,72svh,740px);border:1px solid var(--line);background:var(--sheet-dark)}
-.intro-art{position:relative;min-height:100%;overflow:hidden;background:#253344 url('intake-prism.webp') center 40%/cover no-repeat}
-.intro-art::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,#111820dd,transparent 32%)}
-.intake-amiya{position:absolute;top:3%;left:50%;width:min(112%,660px);height:auto;transform:translateX(-50%);filter:drop-shadow(2px 9px 13px #10212ea0)}
-.intro-copy{display:flex;flex-direction:column;justify-content:end;align-items:start;padding:clamp(22px,6vw,63px)}
-.intro h1{font-family:"Rhodes Serif","Songti SC",serif;font-size:clamp(2.45rem,6.4vw,5.6rem);font-weight:700;line-height:1.15;letter-spacing:-.06em;margin:13px 0 14px}
-.intro .lead{max-width:36ch;color:var(--muted);line-height:1.68}
-.intro .action{min-width:185px;margin-top:25px}
-.intro small{color:var(--muted);margin-top:12px}
-.quiz{width:min(100%,670px);margin:clamp(0px,4vw,38px) auto 0;min-height:calc(100svh - 151px);display:flex;flex-direction:column}
-.progress-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;color:var(--muted)}
-progress{appearance:none;width:100%;height:5px;border:0;display:block;background:var(--line)}
+body{margin:0;isolation:isolate;background:var(--bg);color:var(--ink)}
+body::before{
+  content:"";position:fixed;inset:-24px;z-index:-1;pointer-events:none;
+  background:linear-gradient(155deg,#0b1118b3,#0b1118f5 75%),url('intake-guard.webp') center 28%/cover;
+  filter:blur(24px);
+}
+button,summary{font:inherit;cursor:pointer}
+button:disabled{cursor:default;opacity:.44}
+button:focus-visible,summary:focus-visible,a:focus-visible,.choice:focus-within{outline:2px solid var(--cyan);outline-offset:3px}
+a{color:var(--cyan);text-underline-offset:3px}
+h1,h2,h3,p,figure,blockquote{margin:0}
+.frame{width:min(calc(100% - 64px),1200px);margin-inline:auto}
+.site-head{
+  min-height:60px;display:flex;align-items:center;justify-content:space-between;gap:10px;
+  border-bottom:1px solid var(--line);
+}
+.wordmark{display:flex;align-items:center;gap:11px;font-size:.94rem;font-weight:800;letter-spacing:.055em}
+.emblem{
+  width:21px;height:23px;flex:none;background:var(--ink);
+  clip-path:polygon(50% 0,100% 92%,80% 92%,50% 36%,20% 92%,0 92%);
+}
+.fan,.site-foot{color:var(--muted);font-size:.77rem}
+.fan{white-space:nowrap}
+.site-foot{
+  display:flex;gap:7px 16px;flex-wrap:wrap;justify-content:space-between;
+  border-top:1px solid var(--line);padding:16px 0 max(18px,env(safe-area-inset-bottom));
+}
+main{min-height:calc(100svh - 115px);padding:18px 0 40px}
+.action,.secondary,.art-action{
+  display:inline-grid;place-items:center;min-height:49px;padding:10px 17px;
+  border:1px solid var(--line);font-weight:750;
+}
+.action{background:var(--ink);border-color:var(--ink);color:#0c141a}
+.action:hover:not(:disabled){background:var(--cyan);border-color:var(--cyan)}
+.secondary,.art-action{color:var(--ink);background:#101820ea}
+.secondary:hover:not(:disabled),.art-action:hover{border-color:var(--cyan)}
+.kicker,.counter,.operator-code,.match strong,.rank-list strong{
+  font-family:var(--display);font-weight:650;letter-spacing:.095em;
+}
+.kicker,.counter{color:var(--cyan);font-size:.83rem}
+
+.intro{
+  position:relative;isolation:isolate;overflow:hidden;display:grid;align-items:end;
+  min-height:clamp(525px,calc(100svh - 120px),770px);border-bottom:2px solid var(--cyan);
+  background:#14222d;
+}
+.intro-art{
+  position:absolute;inset:0;z-index:-3;overflow:hidden;
+  background:linear-gradient(125deg,#0b182196,#0b182143),url('intake-prism.webp') center 44%/cover;
+}
+.intro-art::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,#080f17db 0%,#080f17a6 28%,transparent 62%),
+             linear-gradient(0deg,#080f17 0%,transparent 48%);
+}
+.intake-amiya{
+  position:absolute;right:0;top:0;display:block;width:78%;height:100%;object-fit:contain;
+  object-position:center 39%;transform:scale(1.16);transform-origin:58% 32%;
+  filter:drop-shadow(0 15px 24px #050e19b5);
+}
+.intro-copy{width:min(100%,570px);padding:clamp(26px,5vw,68px)}
+.intro h1{
+  font-size:clamp(2.9rem,6.1vw,5.2rem);font-weight:900;line-height:1.05;
+  letter-spacing:-.075em;margin:12px 0 18px;text-wrap:balance;
+}
+.intro .lead{max-width:33ch;color:#e1e8ed;font-size:1rem;line-height:1.65}
+.intro .action{min-width:185px;margin-top:23px}
+.intro small{display:block;color:var(--muted);margin-top:10px;font-size:.79rem}
+
+.quiz{
+  width:min(100%,690px);min-height:calc(100svh - 157px);margin:7px auto 0;
+  display:flex;flex-direction:column;
+}
+.progress-row{display:flex;align-items:center;justify-content:space-between;padding:11px 0;font-weight:720}
+.counter{font-size:1.15rem}
+progress{appearance:none;width:100%;height:3px;border:0;display:block;background:var(--line)}
 progress::-webkit-progress-bar{background:var(--line)}
 progress::-webkit-progress-value{background:var(--cyan)}
 progress::-moz-progress-bar{background:var(--cyan)}
 .quiz form{display:flex;flex:1;flex-direction:column}
-fieldset{padding:0;border:0;margin:24px 0 16px;min-width:0}
-legend{padding:0;margin-bottom:16px;font-size:clamp(1.37rem,4.7vw,2.21rem);font-weight:770;line-height:1.4}
+fieldset{padding:0;border:0;margin:30px 0 20px;min-width:0}
+legend{padding:0;margin-bottom:16px;font-size:clamp(1.32rem,4.7vw,2.12rem);font-weight:800;line-height:1.37;text-wrap:pretty}
 legend:focus,h1:focus{outline:none}
-.choice{display:flex;gap:12px;align-items:center;min-height:61px;margin-bottom:8px;padding:12px 14px;cursor:pointer;background:#16212ce3;border:1px solid #526473;line-height:1.48}
-.choice:hover,.choice:has(input:checked){border-color:var(--cyan)}
-.choice:has(input:checked){background:#21343c;box-shadow:inset 3px 0 var(--cyan)}
-.choice input{margin:0;accent-color:var(--cyan);width:17px;height:17px;flex:0 0 17px}
+#choices{border-top:1px solid var(--line)}
+.choice{
+  display:flex;gap:13px;align-items:center;min-height:58px;padding:11px 12px;
+  cursor:pointer;background:#101a23bf;border-bottom:1px solid var(--line);line-height:1.45;
+}
+.choice:hover{background:#1c2a35}
+.choice:has(input:checked){background:#1a3340;box-shadow:inset 3px 0 var(--cyan);border-color:#63acbc}
+.choice input{margin:0;accent-color:var(--cyan);width:18px;height:18px;flex:0 0 18px}
 .controls{display:flex;gap:10px;align-items:center;justify-content:space-between}
-.quiz .controls{margin-top:auto;padding:10px 0 0}
+.quiz .controls{margin-top:auto;padding-top:10px}
 .quiz .action{min-width:min(58%,205px)}
-.hero{position:relative;display:grid;grid-template-columns:minmax(0,1.61fr) minmax(0,1fr);border:1px solid var(--line);overflow:hidden;background:var(--sheet-dark)}
-.stage{display:grid;place-items:center;position:relative;isolation:isolate;min-width:0;min-height:445px;overflow:hidden;background:radial-gradient(ellipse at 50% 36%,#35464b7a,#171e28d9 66%,#131920fa),url('archive-background.webp') center/cover no-repeat,#141a21}
-.stage::before{content:"";position:absolute;z-index:-1;inset:0;background:repeating-linear-gradient(90deg,transparent 0 47px,#98cede1b 47px 48px),repeating-linear-gradient(0deg,transparent 0 47px,#98cede1b 47px 48px);mask-image:radial-gradient(ellipse,#000,transparent 86%)}
-.stage::after{content:"";position:absolute;z-index:-1;inset:14px;border:1px solid #7d9ca439;pointer-events:none}
-.photo{display:block;width:100%;height:auto;max-height:76svh;min-height:360px;object-fit:contain;object-position:center;filter:drop-shadow(0 10px 12px #0007);padding:10px}
-.art-action{position:absolute;bottom:15px;right:15px;background:#11171de8;color:var(--ink);border:1px solid #8aa9b3a3;min-height:44px;padding:7px 11px;font-size:.77rem;font-weight:700}
-.hero-text{align-self:end;padding:clamp(20px,4vw,42px);min-width:0}
-.hero h1{font-size:clamp(3rem,7.4vw,6rem);line-height:1.04;letter-spacing:-.075em;overflow-wrap:anywhere;margin:7px 0 6px}
-.operator-code{display:block;color:var(--muted);text-transform:uppercase}
-.hero-copy{font-size:.95rem;color:var(--muted);line-height:1.66;margin-top:10px}
-.quote{font-size:1.16rem;line-height:1.45;font-weight:730;margin-top:18px}
-.match{display:flex;align-items:baseline;gap:8px;white-space:nowrap;margin-top:16px;color:var(--signal)}
-.match strong{font:750 2.05rem/1 var(--mono)}
-.match span{font-size:.76rem;color:var(--muted)}
-.hero-text .action{margin-top:19px;min-width:160px}
-.status{color:var(--muted);font-size:.8rem;margin-top:8px}
-.status:empty{display:none}
-.data-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:13px;margin-top:14px}
-.panel{min-width:0;padding:clamp(17px,3vw,26px);background:var(--sheet);border:1px solid var(--line)}
-.panel h2{font-size:1.16rem;margin-bottom:14px}
-.radar{display:block;width:min(100%,418px);height:auto;margin:0 auto;overflow:visible}
+
+.hero{background:#111a23}
+.stage{
+  position:relative;isolation:isolate;overflow:hidden;height:clamp(510px,74svh,780px);
+  background:
+    radial-gradient(ellipse at 60% 32%,color-mix(in srgb,var(--operator-tone) 46%,transparent),transparent 60%),
+    linear-gradient(126deg,#14243861,#101924df),url('archive-background.webp') center 41%/cover,#141e29;
+}
+.stage::before{
+  content:"";position:absolute;inset:11px;z-index:-1;pointer-events:none;
+  background:linear-gradient(var(--operator-tone),var(--operator-tone)) left top/32px 1px no-repeat,
+             linear-gradient(var(--operator-tone),var(--operator-tone)) left top/1px 22px no-repeat;
+}
+.stage::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(0deg,#0a1119 1%,#0a1119c4 13%,#0a111936 32%,transparent 53%);
+}
+.photo{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:contain;object-position:center 37%;transform:scale(1.11);transform-origin:center 29%;
+  filter:drop-shadow(0 13px 18px #0008);
+}
+.art-action{position:absolute;z-index:3;top:13px;right:13px;min-height:44px;font-size:.8rem;padding:6px 11px}
+.archive-plate{
+  position:absolute;z-index:2;bottom:0;inset-inline:clamp(16px,4.3vw,55px);display:grid;
+  grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:12px;
+  padding:10px 0 14px;border-bottom:1px solid var(--operator-tone);
+}
+.plate-name .kicker{letter-spacing:.04em}
+.archive-plate h1{
+  margin:2px 0 4px;font-size:clamp(2.25rem,9vw,6.1rem);font-weight:900;
+  line-height:1.06;letter-spacing:-.07em;overflow-wrap:break-word;
+}
+.operator-code{color:#d3e2ea;text-transform:uppercase;font-size:clamp(.9rem,3.5vw,1.2rem)}
+.match{
+  display:grid;gap:4px;justify-items:end;white-space:nowrap;border-left:1px solid #a7c7d35f;
+  padding-left:12px;color:var(--cyan);
+}
+.match strong{font-size:clamp(1.65rem,5.9vw,3.25rem);line-height:1;letter-spacing:0}
+.match span{font-size:.71rem;color:#dce5e9}
+.hero-text{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;
+  gap:clamp(16px,4vw,52px);padding:clamp(18px,3.8vw,44px);
+}
+.quote{font-size:1.18rem;line-height:1.45;font-weight:790}
+.hero-copy{color:var(--muted);line-height:1.72;margin-top:6px}
+.hero-text .profile-copy{grid-column:1;grid-row:1}
+.voice{grid-column:2;grid-row:1;border-left:2px solid var(--cyan);padding:2px 0 2px 13px}
+.voice p{font-size:1.08rem;font-weight:690;line-height:1.6}
+.voice cite{display:block;margin-top:6px;font-size:.79rem;font-style:normal}
+
+.data-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:34px;margin-top:19px}
+.panel{min-width:0;padding:21px 0 24px;border-top:1px solid var(--line)}
+.panel h2{font-size:1.19rem;margin-bottom:13px;line-height:1.4}
+.radar{display:block;width:min(100%,405px);height:auto;margin:0 auto;overflow:visible}
 .radar text{fill:var(--muted);font-size:12px;font-family:"Rhodes Sans",system-ui,sans-serif}
-.radar .grid{fill:none;stroke:#5b6970;stroke-width:1}
-.radar .axis{stroke:#4b5961;stroke-width:1}
-.radar .you{fill:#f6cd6734;stroke:var(--signal);stroke-width:2.2;stroke-linejoin:round}
-.radar .operator{fill:#8cddf212;stroke:var(--cyan);stroke-width:2;stroke-dasharray:5 4;stroke-linejoin:round}
-.key{display:flex;gap:12px 18px;flex-wrap:wrap;color:var(--muted);font-size:.79rem;margin-top:5px}
-.key span::before{content:"";display:inline-block;width:12px;height:3px;margin-right:6px;vertical-align:middle;background:var(--signal)}
-.key span+span::before{background:var(--cyan)}
-.insights{display:grid;gap:8px}
-.insight{background:var(--sheet-dark);border-left:2px solid var(--line);padding:11px 12px}
-.insight:first-child{border-color:var(--cyan)}
-.insight h3{font-size:.94rem;line-height:1.4}
-.insight h3 span{color:var(--cyan);font-size:.74rem;margin-right:8px}
-.insight p{color:var(--muted);font-size:.87rem;line-height:1.55;margin-top:5px}
-.more-traits{margin-top:13px}
-.more-traits summary{padding:10px 0;min-height:43px;color:var(--cyan);font-size:.88rem}
-.traitlist{display:grid;gap:10px;border-top:1px solid var(--line);padding-top:10px}
-.trait{font-size:.82rem;padding-bottom:8px;border-bottom:1px solid var(--line)}
-.trait:last-child{border-bottom:0}
+.radar .grid{fill:none;stroke:#54636e;stroke-width:1}
+.radar .axis{stroke:#40515e;stroke-width:1}
+.radar .you{fill:#f5f7f825;stroke:var(--signal);stroke-width:2.2;stroke-linejoin:round}
+.radar .operator{fill:#7ee6fc12;stroke:var(--cyan);stroke-width:2;stroke-dasharray:5 4;stroke-linejoin:round}
+.key{display:flex;gap:9px 18px;flex-wrap:wrap;justify-content:center;color:var(--muted);font-size:.84rem;margin-top:6px}
+.key span::before{
+  content:"";display:inline-block;width:14px;border-top:2px solid var(--signal);margin-right:6px;vertical-align:middle;
+}
+.key span+span::before{border-top:2px dashed var(--cyan)}
+.insights{display:grid;gap:0}
+.insight{border-bottom:1px solid var(--line);padding:13px 0}
+.insight:first-child{padding-top:0}
+.insight h3{font-size:1rem;line-height:1.4}
+.insight h3 span{color:var(--cyan);font-size:.81rem;margin-right:10px}
+.insight p{color:#d4dce2;line-height:1.62;margin-top:4px}
+.more-traits{margin-top:3px}
+.more-traits summary{padding:12px 0;min-height:44px;color:var(--cyan);font-size:.9rem}
+.traitlist{display:grid;gap:8px;border-top:1px solid var(--line);padding-top:10px}
+.trait{font-size:.89rem;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.trait:last-child{border:0}
 .trait p{color:var(--muted);margin-top:3px;line-height:1.55}
 .rank-list{list-style:none;margin:0;padding:0;display:grid;gap:11px}
-.rank-list li{display:grid;grid-template-columns:minmax(5.2em,auto) 1fr 3.3em;align-items:center;gap:9px;font-size:.87rem}
-.rank-list li strong{font:650 .84rem var(--mono);text-align:right}
-.rank-line{height:6px;background:#42515a}
-.rank-line i{display:block;height:100%;background:#7c98a5}
-.rank-list li:first-child .rank-line i{background:var(--signal)}
-.note,.basis,.evidence li{color:var(--muted);line-height:1.65}
-.note{font-size:.78rem;margin-top:11px}
-.evidence ol{padding-left:1.15rem;margin:0 0 9px}
-.evidence li{font-size:.87rem}
+.rank-list li{display:grid;grid-template-columns:minmax(5.2em,auto) 1fr 3.25em;align-items:center;gap:9px;font-size:.92rem}
+.rank-list li strong{text-align:right;letter-spacing:.03em}
+.rank-line{height:5px;background:#33424e}
+.rank-line i{display:block;height:100%;background:#8195a5}
+.rank-list li:first-child .rank-line i{background:var(--cyan)}
+.note,.basis,.evidence li{color:var(--muted);line-height:1.67}
+.note,.basis{font-size:.85rem;margin-top:11px}
+.evidence ol{padding-left:1.17rem;margin:0}
 .evidence li+li{margin-top:6px}
 .evidence strong{color:var(--ink)}
-.basis{font-size:.84rem}
-.result-controls{justify-content:flex-end;margin-top:15px}
-@media(max-width:680px){.result-controls .action{flex:1}}
-dialog{width:min(calc(100% - 22px),980px);padding:14px;border:1px solid var(--line);background:#131a20;color:var(--ink);overflow:auto;max-height:92svh}
-dialog::backdrop{background:#080a0bdc}
-dialog .dialog-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
-dialog h2{font-size:1rem}
-dialog .dialog-art{display:block;width:100%;height:74svh;object-fit:contain}
-@media(max-width:680px){
-  .frame{width:calc(100% - 28px)}
-  .site-head{min-height:51px}
-  main{padding:12px 0 24px}
-  .intro{position:relative;display:grid;grid-template-columns:1fr;min-height:min(720px,max(525px,calc(100svh - 120px)));align-items:end;isolation:isolate;overflow:hidden}
-  .intro-art{position:absolute;z-index:-2;inset:0;background-position:center 40%}
-  .intro-art::after{display:none}
-  .intake-amiya{top:1%;left:51%;width:min(109%,600px)}
-  .intro::after{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(0deg,#10161d 0%,#10161df7 23%,#10161db8 48%,#10161d09 67%,transparent 78%);pointer-events:none}
-  .intro-copy{padding:18px 20px 21px}
-  .intro h1{font-size:clamp(2.28rem,10.15vw,4.3rem);margin:10px 0}
-  .intro .lead{font-size:.91rem}
-  .intro .action{margin-top:18px;width:100%}
-  .intro small{margin-top:9px;font-size:.72rem}
-  .quiz{min-height:calc(100svh - 94px)}
-  .quiz .controls{background:#111920ed;position:sticky;bottom:0;padding-bottom:max(9px,env(safe-area-inset-bottom));box-shadow:0 -7px 18px #111417d9}
-  .hero{display:block}
-  .stage{min-height:0;height:clamp(292px,50svh,550px)}
-  .photo{position:absolute;inset:0;height:100%;max-height:none;min-height:0;padding:2px 1px 7px}
-  .art-action{bottom:13px;right:13px}
-  .hero-text{padding:17px 17px 18px;border-top:1px solid var(--line)}
-  .hero h1{font-size:clamp(2.75rem,12vw,4.8rem)}
-  .hero-top{display:flex;justify-content:space-between;gap:8px;align-items:center}
-  .match{margin-top:0;gap:4px;flex-direction:column;align-items:end}
-  .match strong{font-size:1.65rem}
-  .match span{font-size:.65rem}
-  .quote{margin-top:12px;font-size:1.04rem}
-  .hero-copy{margin-top:6px;font-size:.89rem}
-  .hero-text .action{margin-top:13px;width:100%}
-  .data-grid{grid-template-columns:1fr}
-  .comparison{order:-1}
+.share-panel{
+  display:grid;grid-template-columns:112px minmax(0,1fr);gap:14px;align-items:center;
+  background:#e5edf1;color:#101a22;border:0;border-left:3px solid #67b8cd;padding:15px;
 }
-/* The archive name plate belongs to the illustration stage. */
-.hero{grid-template-columns:minmax(0,1.65fr) minmax(0,1fr)}
-.stage{min-height:490px}
-.stage::after{z-index:1;inset:0;border:0;background:linear-gradient(0deg,#0c141dfb 1%,#0d1520c4 13%,#0c131939 28%,transparent 53%)}
-.stage .photo{padding:4px 3px 74px;min-height:490px;max-height:72svh;object-position:center 44%}
-.archive-plate{position:absolute;z-index:2;bottom:0;left:0;right:0;display:flex;gap:10px;justify-content:space-between;align-items:end;padding:18px 20px;border-top:1px solid #c2dbe252;background:#111c2663}
-.plate-name{min-width:0;padding-left:11px;border-left:3px solid var(--cyan)}
-.archive-plate h1{margin:2px 0;font-weight:900;font-size:clamp(2.25rem,6.8vw,5.35rem);line-height:1.04}
-.archive-plate .match{margin:0;display:grid;gap:3px;justify-items:end;color:var(--signal)}
-.art-action{z-index:3;top:12px;right:12px;bottom:auto}
-.hero-text{align-self:center}
-.hero-text .quote{margin-top:0}
-.voice{margin:18px 0 0;color:#edf1f4;padding:12px 13px;background:#111b25;border-left:2px solid var(--cyan)}
-.voice p{margin:0;font-size:1.04rem;font-weight:690;line-height:1.55}
-.voice cite{display:block;margin-top:7px;color:var(--muted);font-size:.76rem;font-style:normal}
-.voice cite a{text-underline-offset:2px}
-.share-panel{margin-top:14px;display:grid;grid-template-columns:96px minmax(0,1fr);gap:15px;align-items:center}
 .share-panel h2{margin-bottom:4px}
-.share-panel p{overflow-wrap:anywhere;font-size:.85rem;color:var(--muted);line-height:1.55}
-.share-code{height:auto;background:#fff;width:100%;display:block}
-.share-panel .secondary{margin-top:9px;min-height:44px}
+.share-panel p{font-size:.87rem;color:#314653;line-height:1.53;overflow-wrap:anywhere}
+.share-panel .secondary{margin-top:8px;min-height:44px;padding:7px 10px;font-size:.86rem}
+.share-panel a{color:#143c50}
+.qr-frame{background:#fff;border:1px solid #acbcc4;padding:3px}
+.share-code{display:block;width:100%;height:auto;image-rendering:pixelated}
+.result-controls{margin-top:16px;justify-content:flex-end}
+.status{color:var(--muted);font-size:.85rem;margin-top:8px}
+.status:empty{display:none}
+dialog{
+  width:min(calc(100% - 22px),980px);padding:14px;border:1px solid var(--line);
+  background:#101820;color:var(--ink);overflow:auto;max-height:92svh;
+}
+dialog::backdrop{background:#070b0ee8}
+.dialog-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+.dialog-head h2{font-size:1rem}
+.dialog-art{display:block;width:100%;height:74svh;object-fit:contain}
+
 @media(max-width:680px){
-  .stage{min-height:0;height:clamp(330px,59svh,575px)}
-  .stage .photo{min-height:0;max-height:none;padding-bottom:65px;object-position:center 38%}
-  .archive-plate{padding:13px 14px}
-  .archive-plate h1{font-size:clamp(2.25rem,11.2vw,4.1rem)}
-  .art-action{top:9px;right:9px;bottom:auto}
-  .voice{margin-top:12px}
-  .share-panel{grid-template-columns:88px minmax(0,1fr)}
+  .frame{width:calc(100% - 36px)}
+  .site-head{min-height:52px}
+  main{padding:0 0 26px}
+  .intro,.hero{margin-inline:-18px}
+  .intro{min-height:clamp(520px,calc(100svh - 52px),760px)}
+  .intro-art{background-position:center 20%}
+  .intro-art::after{
+    background:linear-gradient(0deg,#080f17 2%,#080f17f0 18%,#080f17bc 34%,#080f1744 49%,transparent 63%);
+  }
+  .intake-amiya{top:-1%;right:-23%;width:145%;height:78%;object-position:center top;transform:scale(1.02)}
+  .intro-copy{padding:23px 19px 21px}
+  .intro h1{font-size:clamp(2.4rem,11.5vw,4.6rem);margin:9px 0 12px}
+  .intro .lead{font-size:.96rem}
+  .intro .action{width:100%;margin-top:17px;min-height:51px}
+  .quiz{margin-top:5px;min-height:calc(100svh - 87px)}
+  fieldset{margin:21px 0 14px}
+  legend{margin-bottom:14px}
+  .choice{min-height:54px;padding:9px 10px}
+  .quiz .controls{
+    position:sticky;z-index:4;bottom:0;margin-inline:-18px;padding:8px 18px max(8px,env(safe-area-inset-bottom));
+    border-top:1px solid #40505d;background:#0b1118f5;
+  }
+  .stage{height:clamp(405px,calc(100svh - 82px),685px)}
+  .photo{left:-12%;width:124%;object-position:center 32%;transform:scale(1.08);transform-origin:center 24%}
+  .art-action{top:9px;right:9px}
+  .archive-plate{inset-inline:17px;padding-bottom:12px}
+  .archive-plate h1{font-size:clamp(2.1rem,11vw,4.5rem)}
+  .hero-text{grid-template-columns:1fr;gap:14px;padding:17px 18px 20px}
+  .voice{grid-column:1}
+  .hero-text .profile-copy{grid-row:2}
+  .data-grid{grid-template-columns:1fr;margin-top:14px}
+  .panel{padding-block:17px 20px}
+  .share-panel{grid-template-columns:96px minmax(0,1fr);padding:12px}
+  .result-controls .action{flex:1}
+}
+@media(prefers-reduced-motion:no-preference){
+  .action,.secondary,.choice,.art-action{transition:background-color .18s,border-color .18s}
+  .intro-art{animation:hero-arrive .55s ease-out both}
+  .stage .photo{animation:hero-arrive .48s ease-out both}
+  .archive-plate{animation:panel-arrive .26s .22s ease-out both}
+  #form[data-transition="even"] fieldset{animation:question-even .18s ease-out both}
+  #form[data-transition="odd"] fieldset{animation:question-odd .18s ease-out both}
+  @keyframes hero-arrive{from{opacity:.36}to{opacity:1}}
+  @keyframes panel-arrive{from{opacity:0;translate:0 8px}to{opacity:1;translate:none}}
+  @keyframes question-even{from{opacity:.58}to{opacity:1}}
+  @keyframes question-odd{from{opacity:.58}to{opacity:1}}
 }
 </style>
 </head>
@@ -193,9 +279,9 @@ dialog .dialog-art{display:block;width:100%;height:74svh;object-fit:contain}
   <section class="intro" id="intro">
     <div class="intro-art"><img class="intake-amiya" src="intake-guard.webp" alt="近卫阿米娅的精二立绘，冷蓝剑光环绕人物" width="1240" height="1240" fetchpriority="high"></div>
     <div class="intro-copy">
-      <p class="kicker">RHODES ISLAND / INTAKE</p>
+      <p class="kicker">RHODES ISLAND / INTAKE FILE</p>
       <h1>你最像哪位<br>罗德岛干员？</h1>
-      <p class="lead">从一次深夜聊天，到一趟临时改道的旅行。选你真的会做的事，看看你和谁最像。</p>
+      <p class="lead">你刚登上罗德岛。夜宵桌上有个空位，靠港还有半天。遇到这些小事，选你平时最可能做的那一件。</p>
       <button type="button" class="action" id="start">开始测试</button>
       <small>24 道情境题 · 约 4 分钟 · 20 位干员</small>
     </div>
@@ -208,7 +294,7 @@ dialog .dialog-art{display:block;width:100%;height:74svh;object-fit:contain}
       <div class="controls"><button type="button" class="secondary" id="previous">上一题</button><button type="submit" class="action" id="next" disabled>下一题</button></div>
     </form>
   </section>
-  <section class="results" id="results" hidden></section>
+  <section class="results story-result" id="results" hidden></section>
   <noscript>请启用 JavaScript 后开始测试。</noscript>
 </main>
 <footer class="frame site-foot"><span>仅供娱乐 · 答题在本机处理</span><span>干员立绘 © 鹰角网络</span></footer>
@@ -224,30 +310,30 @@ const dimensions = [
 
 // Choices run from the first pole to the second; display order is interleaved.
 const bank = [
-  [0, '被朋友带进一个全是陌生人的深夜饭局，你通常是什么状态？', '安静坐着听，能听到有趣的故事就满足。', '先聊身边那一个人，熟一点再说。', '听见感兴趣的话题，我会顺势加入。', '很快就会抛个问题，让这桌的人都能聊起来。'],
-  [3, '一个人到陌生城市，醒来发现今天完全空着。你想怎么过？', '从出发前存的几个地方里选，心里比较踏实。', '先定一个想去的地方，其余到那儿再想。', '上街随便走走，时不时看一眼地图。', '坐上第一班看着顺眼的车，看看它把我带去哪。'],
-  [5, '朋友凌晨发来一句「有点难受，睡不着」。你最可能怎么回？', '问是什么事让他睡不着，看看今晚能做什么。', '问他需要我打个电话，还是帮他安排点什么。', '回一句「我在」，再问他想不想讲讲。', '先陪他聊一会儿，聊到他安静下来也行。'],
-  [2, '关系很好的朋友拿你开了一个玩笑，你确实介意。', '先让场面过去，改天两个人独处时再提。', '当时把话题岔开，散场就私下找他说。', '当场轻轻说一句「这个我有点介意」。', '当场说明哪句话让我不舒服，也给对方回应的机会。'],
-  [1, '新认识的人认真聊起自己的脆弱一面，你会怎么接？', '认真听，自己的事情会等熟了再讲。', '分享一件相似的小事，把更私人的部分留着。', '如果有共鸣，我会聊聊自己曾经怎么熬过来。', '愿意讲一件平时很少提起的真事，让对方知道我懂。'],
-  [4, '朋友聚会散场，一位熟人的情绪突然变得很差。', '问他想和谁待着，让他来决定。', '告诉他今晚可以找我，也问问有没有熟悉的人在附近。', '我会主动留下陪他一会儿，再问他想怎么安排。', '我会留下来陪到他安顿好，今晚的其他安排往后推。'],
-  [0, '好不容易有个完全属于自己的周六，你最想怎么充电？', '一个人待足一天，消息也慢点回。', '大部分时间自己过，晚上见一个熟人。', '约几个熟悉的人见面，别的时间随意。', '发消息组个局，有新人加入也挺开心。'],
-  [3, '朋友提议临时改道，去看一个地图上几乎没人标记的日落点。', '继续去原来选好的地方，知道那里能看见什么。', '先查到达时间和返回路线，合适再改。', '约好最多绕路半小时，有空就试试看。', '马上改道，没看到日落也算多看了一段路。'],
-  [1, '认识不久的人很合拍，邀请你下周一起短途旅行。', '先婉拒，下次多见几回再考虑一起出门。', '先约一个下午，看看长时间相处是什么感觉。', '愿意一起去一天，提前聊清楚各自习惯。', '如果我也想去，就答应一起，到了再磨合。'],
-  [5, '朋友盼了很久的一件事落空了，说自己准备那么久真傻。', '陪他想想现在还能挽回或重新尝试的部分。', '问有没有一件眼下的事，我可以跟他一起处理。', '告诉他那段努力我有看见，等他想聊了我在。', '先陪他把这份失落讲完，让他今天可以难过。'],
-  [4, '四个人约旅行，快出发了，还有人对住宿犹豫不决。', '把选项给大家，各自决定能否接受。', '说出自己愿意住哪里，让另外几个人也表个态。', '问大家最在意哪一点，我来找符合共同条件的选择。', '我把几个人的顾虑问清楚，给出一套能定下来的方案。'],
-  [2, '你和喜欢的人对一件重要的事有不同看法，聊着聊着开始上头。', '先结束话题，等彼此缓下来再开口。', '指出现在都不在状态，约个具体时间继续。', '先说清我真正介意的点，之后再聊细节。', '现在把分歧讲透，也请对方说出他的顾虑。'],
-  [3, '突然想学一样全新的东西，比如调酒、陶艺或拍胶片。', '找一套成熟的入门步骤，一步一步来。', '先看别人是怎么做的，再挑个简单的起点。', '请会的人带我玩一回，做完再看教程。', '买最基础的材料，先动手，做错了再查。'],
-  [0, '朋友婚礼上，安排你和一桌素不相识的人坐一起。', '礼貌打招呼，然后享受自己的那份安静。', '和左右邻座聊聊我怎么认识新人的。', '跟上桌上已经聊起来的话题。', '主动把大家介绍起来，说不定散场还会加好友。'],
-  [2, '发现亲近的人最近一直避开一个你很在意的话题。', '先等等，留意对方什么时候愿意谈。', '挑时机问一句，看对方现在有没有余力聊。', '把我留意到的变化说出来，也说我希望聊聊。', '主动开口把话题说清楚，邀请对方说说为什么在回避。'],
-  [1, '你刚遇到一个很想继续认识的人，聊到自己的生活。', '多聊兴趣和日常，留一点需要时间才知道的事。', '分享自己舒服的话题，看对方愿意聊到哪里。', '愿意说说我真正在乎什么，也想了解对方。', '很自然地说起一个塑造了我的经历，让对方认识我。'],
-  [5, '朋友做了一顿很用心的饭却翻车了，边收拾边自责。', '帮着收拾，看还能补救哪一道菜。', '先提议一起把今晚的饭解决，再慢慢聊。', '告诉他我看得出这顿饭准备了很久，然后一起收拾。', '先陪他坐一下，说说我为什么本来就很期待来。'],
-  [4, '朋友们经常借同一个房间聚会，有人总是最后一个收拾。', '下次商量轮流当那个最后收拾的人。', '每次认领我用过的地方，也提醒大家分一分。', '主动带着大家收拾几次，直到自然形成习惯。', '场地对我很重要，我愿意把最后收尾这件事长期接过来。'],
-  [0, '在小众影展散场后，有几个人正聊你很喜欢的那一幕。', '自己回味，晚一点和熟人分享。', '如果正好有人看过来，我会说两句。', '我会站过去，等一个自然的空当加入。', '主动问他们怎么理解那个结尾，顺便分享我的看法。'],
-  [2, '群聊里有人认真误解了你的原意，已经有几个人在附和。', '先等群里安静下来，再单独找最开始那个人。', '私下把意思告诉对方，请他有空在群里提一句。', '在群里先简短澄清，剩下的找当事人谈。', '直接在群里把原意和分歧讲完整，邀请大家回应。'],
-  [3, '只剩一场演出的时间。你可以重温很喜欢的乐队，也可以盲听一支新乐队。', '买熟悉的那场，想听的歌已经在脑子里了。', '如果新乐队有一个我喜欢的风格，再考虑换。', '先听一两首新乐队的歌，当下觉得有趣就去。', '选盲听，见证没见过的东西本身就值票价。'],
-  [1, '刚熟悉起来的朋友爽约了一次，并主动跟你解释。', '记一下这件事，等下次看他怎么做。', '先接受解释，下次选个容易改期的安排。', '照样会约他，顺便问下次怎样更方便。', '相信他这次有难处，下次还按双方原本想做的事约。'],
-  [4, '看完电影，朋友们突然为下一站僵住，等得有点扫兴。', '大家各自选下一站也可以，我说说自己的打算。', '我陪有相同想法的人先走，有需要再约在一起。', '我会听下大家的大致偏好，提一个能一起走的地方。', '我来接下今晚余下的安排，让大家先放松。'],
-  [5, '好朋友即将搬去另一座城市，最近有些舍不得。', '问有什么东西可以帮他收、帮他寄。', '约一天帮忙，也提前定好下次见面的时间。', '找个安静的地方吃顿饭，聊聊他最想念什么。', '留一个晚上慢慢告别，哪怕什么都不做也陪着。'],
+  [0, "刚登上罗德岛。门口有人在吃夜宵，里面还有一个空位。你进去之后呢？", "挑个位置坐下。先听听今晚都在聊什么。", "跟旁边的人打个招呼，有话题再慢慢聊。", "顺着桌上的话题接一句，坐进去再说。", "端着碗问一句「你们聊到哪儿了？」"],
+  [3, "你常点的那家店今天休息。隔壁新开了一家，菜单全是你没吃过的。", "走两条街也行，我还有一家常吃的。", "看看店里有没有一种我熟悉的口味。", "进去点个最小份的，尝尝看。", "问老板什么最特别，今天就吃那个。"],
+  [5, "朋友剪了一个月的视频，只收到十来个赞。凌晨他给你发了句「删了算了」。", "问他愿不愿意让我一起看，找找有没有能改的地方。", "陪他把想留的素材先备份，明天再看删不删。", "说我看得出他花了很久，问他最舍不得删哪一段。", "回一句「我在」，陪他把这一个月的心情说完。"],
+  [2, "朋友每次都替你点同一杯饮料。今天杯子又推到你面前，可你早就想换了。", "今天先喝，下次出门前和他说我想换一杯。", "等喝完我们单独走的时候，顺口提一下。", "接杯子时就说「下次我想自己点」。", "趁现在还能换，直接说我今天想喝别的。"],
+  [1, "刚熟起来的同伴把私人频道留给你，说以后舰上有事可以直接找他。", "先留着。相处久了，我才会用这个频道聊自己的事。", "偶尔发点无关紧要的事，看看聊起来舒不舒服。", "下次碰到烦心事，愿意挑一件和他说。", "如果今天就有件想说的事，我会直接发过去。"],
+  [4, "三个人凑了一堆吃不完的食材，今晚打算在宿舍煮火锅。群里都说「你们定」。", "把各自手上的食材列出来，大家挑自己想带的。", "先认领我能做的，让另外两个人选他们要管什么。", "把还缺的东西和时间对一下，自己顺手补最急的一件。", "我来凑一锅菜单、约时间，最后把需要大家带的东西发群里。"],
+  [0, "周五回到家，发现原本约好的局取消了。难得没安排，你是松了一口气还是有点空？", "松一口气。耳机一戴，今晚谁也别找我。", "先自己待会儿，想说话了再找一个熟人。", "问问小群里有没有人同样闲下来，没约到也行。", "我会发条消息把局续上，叫个新朋友来也挺好。"],
+  [3, "罗德岛靠港半天。原来的路线你已经存好了，路边有人说另一侧有个刚开的小市集。", "照原路线走，下次有空再去。", "查一下来回多久，能顺路就去看看。", "先拐过去逛一圈，原路线上少去一站也可以。", "把原路线收起来，今天就跟着这个消息走。"],
+  [1, "新朋友聊天时说：「我以为你挺难接近的。」你居然还挺想和他继续聊。", "笑一笑，接着聊我们刚才都感兴趣的事。", "说我和人熟得慢，再讲一件轻松的小事。", "说说我通常为什么看起来有距离，顺便问他怎么想。", "如果聊得来，我会说一件很少跟刚认识的人说的事。"],
+  [5, "朋友花了很久排练，演完走下来对你说：「我中间弹错了两次。」", "如果他愿意，我和他一起回听那两段。", "告诉他哪一段听起来最顺，给他一点下次能用的反馈。", "先说我知道他为这场准备了多久，再听他讲哪里难受。", "先陪他缓一会儿，让他知道在我这儿可以先不用复盘。"],
+  [4, "你和几个人合养了一盆公共休息室的植物。过了两周，大家都默认有人会浇。", "约一个轮值，每个人管好自己那天。", "这周我先认领两次，也问问谁来接别的日子。", "先把打理方法贴在花盆边，空着的日子我暂时补上。", "我来管它的日常，大家想帮忙的时候随时来。"],
+  [2, "你和室友对开窗这件小事一直意见相反。今天窗户又在你刚关上后被打开。", "今天先忍一会儿，等两人都不烦时再聊。", "发条消息说想找个时间聊聊开窗，先把当下过完。", "现在说一句我有点冷，晚些再一起定规则。", "现在就谈谈各自什么时候想开窗，把办法定下来。"],
+  [3, "有人送你一盒没玩过的桌游。朋友刚好都在，今天就能开一局。", "先把规则看完，有不明白的查清再发牌。", "看完快速指引，弄清怎么结束就可以开始。", "边看规则边跑一轮教学局，当场搞懂。", "直接发牌。卡住了再翻到对应那一页。"],
+  [0, "你去接水，发现通讯室门口几个人正聊一个你很喜欢的冷门作品。你只认识其中一位。", "接完水就走，回头私下发给认识的那个人。", "在旁边听一会儿，被叫到再接话。", "等他们聊到我有印象的部分，顺势插一句。", "走过去问他们最喜欢哪一段，我其实很想聊。"],
+  [2, "你发在群里的玩笑被当真了，有人回了一句挺冲的话。你还没来得及解释。", "等大家聊到别处，再单独和那个人说清楚。", "先私聊那个人补一句原意，群里暂时放着。", "在原消息下补一句澄清，细说的话就去私聊。", "趁误会刚发生就把分歧说开，也听听对方怎么理解的。"],
+  [1, "朋友的朋友想借走一本你很喜欢的书。他说两周后一定还。", "这本自己留着，告诉他在哪能找到另一本。", "先借一本同类的，彼此熟一点再说这本。", "借给他，顺便约好在哪天见面拿回来。", "借给他。先信他会还，到期之前我不会惦记。"],
+  [5, "你朋友搬到了新地方。第一晚他发来一张空餐桌，说「突然觉得这屋子好安静」。", "问还有什么添置或搬运要帮忙，定个时间去。", "问他有没有想吃的，我可以帮他把第一顿安排上。", "问他这一天最不习惯的是哪一刻，有空我陪他聊。", "开个语音陪着他，哪怕各做各的也行。"],
+  [4, "夜宵结束，桌上还有纸杯和外卖盒。有人说要赶末班车，有人还在聊天。", "把我用过的收走，顺手提醒大家各自带走一点。", "问身边那个人要不要和我一起收一半。", "我先把桌面收起来，喊还有空的人帮忙倒垃圾。", "我和要走的人打声招呼，留下把整张桌子收完。"],
+  [0, "朋友拉你进一个约徒步的小群，群里刚好安静下来。群公告写着欢迎自我介绍。", "先把路线存好，到了集合点再认识大家。", "发个简短的招呼，接下来先看大家聊什么。", "说说自己最近走过哪条路，等有兴趣的人来接。", "自我介绍完顺便发个问题，把潜水的人也捞出来。"],
+  [2, "常一起出门的人又迟到了。你知道他这次有理由，但这已经是第三次。", "先把今天过好，等下次约之前再讲。", "见面先不说，散场时单独聊这件事。", "他一到我会先说我等了多久，别的之后再聊。", "当场说我介意的是反复迟到，和他一起把下次的约法定好。"],
+  [3, "书店有两本同价的书。一本是你喜欢的作者的新书，另一本只写着一句很怪的简介。", "拿熟悉的作者。今天就是想读熟悉的节奏。", "选熟悉的，把那句怪简介拍下来，下次想起来再找。", "先读陌生那本的第一页，合胃口就换它。", "买我一无所知的那本。简介够怪已经是理由。"],
+  [1, "一个才合作过一次的同伴说愿意替你代领寄到舰上的包裹。只是日常用品。", "谢谢他，我还是自己去。下次熟一点再托。", "先让他带一个方便拿的小件。", "请他一起领，约好放在哪里，回头我自己去取。", "把代领手续给他，到时等他通知我就好。"],
+  [4, "你们留了一本旅行手账给所有人传着写。快到约好的最后一天了，还有两个人没动笔。", "告诉大家截止时间，各自决定想写多少。", "把我负责的那几页写好，顺手提醒还没写的人。", "问两人缺什么，帮忙找照片或留几块容易写的位置。", "我来联系每个人、收齐能写的内容，把手账完整整理出来。"],
+  [5, "值夜班的同伴把记录本合上，说：「今天真想把这一页撕了。」", "帮他翻出今天最头疼的一件事，看能不能先处理掉。", "问他哪一步我能帮忙补上，让他早点收工。", "把水推过去，问他想从今天哪一段说起。", "坐下来陪他待一会儿，等他愿意讲了再听。"]
 ];
 const optionValues = [-3,-1,1,3];
 const optionOrders = [[1,3,0,2],[0,2,3,1],[3,1,2,0],[2,0,1,3]];
@@ -294,6 +380,7 @@ let current = 0;
 
 function showQuestion() {
   const [, question, ...choices] = bank[current];
+  get('form').dataset.transition = current % 2 ? 'odd' : 'even';
   get('intro').hidden = true;
   get('results').hidden = true;
   get('quiz').hidden = false;
@@ -414,6 +501,13 @@ const voiceLines = [
 ];
 const shareUrl = "https://itsshannai.github.io/rhodes-island-quiz/";
 
+// Tints follow the order of the operator dossiers below.
+const operatorTints = [
+  '#b3c7ff','#deaeec','#f2a2a6','#bfaef7','#f0c374','#84d7ff','#a9dbeb','#f2d17c',
+  '#b8e895','#8ac8ed','#e3c483','#a4d8f5','#ddb582','#a0dfcf','#c7b5ff','#a4daef',
+  '#f5b4d8','#f7ba99','#b4d6ff','#b1c0ff',
+];
+
 const portraitFile = operator => 'operator-' + String(operators.indexOf(operator) + 1).padStart(2, '0') + '.webp?v=elite2';
 const asPercent = value => (value + 12) * 100 / 24;
 const matchIndex = candidate => (100 * (1 - Math.sqrt(candidate.distance / (dimensions.length * 24 ** 2)))).toFixed(1);
@@ -456,8 +550,7 @@ function comparisonRows(totals, profile) {
   });
 }
 
-function comparisonPanel(totals, profile, name) {
-  const rows = comparisonRows(totals, profile);
+function comparisonSummary(rows, name) {
   const byGap = [...rows].sort((a, b) => a.gap - b.gap);
   const closest = byGap[0];
   const furthest = byGap.at(-1);
@@ -471,10 +564,15 @@ function comparisonPanel(totals, profile, name) {
     ['最相近', closest, furthest.gap === 0 ? '六项答题倾向均与这份干员档案相符。' : describe(closest)],
   ];
   if (furthest.gap > 0) summary.push(['差异最大', furthest, describe(furthest)]);
+  return summary;
+}
+
+function comparisonPanel(totals, profile, name) {
+  const rows = comparisonRows(totals, profile);
   return `
     <section class="panel comparison">
       <h2>你和干员差在哪</h2>
-      <div class="insights">${summary.map(([caption, row, explanation]) => `
+      <div class="insights">${comparisonSummary(rows, name).map(([caption, row, explanation]) => `
         <article class="insight"><h3><span>${caption}</span>${row.label}</h3><p>${explanation}</p></article>`
       ).join('')}</div>
       <details class="more-traits">
@@ -499,7 +597,7 @@ function showResults() {
   results.hidden = false;
   // Interpolation uses only the fixed question bank and internal profiles.
   results.innerHTML = `
-    <article class="hero">
+    <article class="hero" style="--operator-tone:${operatorTints[operators.indexOf(winner)]}">
       <figure class="stage">
         <img class="photo" src="${portraitFile(winner)}" alt="${winner.name}精二立绘" decoding="async" fetchpriority="high">
         <button class="art-action" type="button" id="open-art">查看完整立绘</button>
@@ -512,11 +610,13 @@ function showResults() {
         </div>
       </figure>
       <div class="hero-text">
-        <p class="quote">${winner.line}</p>
-        <p class="hero-copy">${winner.description}</p>
         <blockquote class="voice"><p>「${voiceLine}」</p>
           <cite><a href="${winner.source}#语音记录" target="_blank" rel="noreferrer">干员语音 · ${voiceTitle}</a></cite>
         </blockquote>
+        <div class="profile-copy">
+          <p class="quote">${winner.line}</p>
+          <p class="hero-copy">${winner.description}</p>
+        </div>
       </div>
     </article>
     <dialog id="art-dialog" aria-labelledby="art-title">
@@ -542,12 +642,12 @@ function showResults() {
       </section>
       <section class="panel evidence">
         <h2>哪些回答让你像 TA</h2>
-        <ol>${reasons.map(reason => `<li><strong>${dimensions[reason.dimension][0]}</strong> · 你选了「${reason.text}」</li>`).join('')}</ol>
+        <ol>${reasons.map(reason => `<li><strong>${dimensions[reason.dimension][0]}</strong> · ${reason.text}</li>`).join('')}</ol>
         <p class="basis">${winner.basis} <a href="${winner.source}" target="_blank" rel="noreferrer">查看 PRTS 干员档案</a></p>
       </section>
     </div>
     <section class="panel share-panel" aria-labelledby="share-heading">
-      <img class="share-code" src="quiz-share.png" alt="扫码打开罗德岛入职档案" width="328" height="328">
+      <div class="qr-frame"><img class="share-code" src="quiz-share.png" alt="扫码打开罗德岛入职档案" width="328" height="328"></div>
       <div><h2 id="share-heading">分享测试</h2><p>扫码让朋友测一测像哪位干员。</p>
         <button type="button" class="secondary" id="copy-quiz-link">复制测试链接</button>
         <p class="status" id="share-status" role="status"></p>
@@ -576,7 +676,7 @@ function showResults() {
     }
   });
   get('restart').addEventListener('click', start);
-  get('result-title').focus();
+  get('result-title').focus({preventScroll:true});
   window.scrollTo(0, 0);
 }
 
@@ -627,9 +727,9 @@ function drawCardRadar(context, totals, profile, y) {
     context.stroke();
   }
   [.25,.50,.75,1].forEach(value => polygon(dimensions.map(() => value), '#566571'));
-  polygon(totals.map(value => asPercent(value) / 100), '#f6cd67', '#f6cd6733');
+  polygon(totals.map(value => asPercent(value) / 100), '#f5f7f8', '#f5f7f833');
   context.setLineDash([8,6]);
-  polygon(profile.map(value => asPercent(value * 4) / 100), '#8cddf2');
+  polygon(profile.map(value => asPercent(value * 4) / 100), '#7ee6fc');
   context.setLineDash([]);
   context.textAlign = 'center';
   context.fillStyle = '#d4dde4';
@@ -637,9 +737,9 @@ function drawCardRadar(context, totals, profile, y) {
     const [x, y] = point(axis, 1.30);
     context.fillText(label, x, y + 7);
   });
-  context.fillStyle = '#f6cd67';
+  context.fillStyle = '#f5f7f8';
   context.fillText('你的答题倾向', 326, y + 373);
-  context.fillStyle = '#8cddf2';
+  context.fillStyle = '#7ee6fc';
   context.fillText('干员的档案倾向', 570, y + 373);
   context.textAlign = 'left';
 }
@@ -668,8 +768,7 @@ async function saveCard(winner, score, voiceLine, ranking, reasons) {
     const width = right - left;
     const ink = '#f2f4f4';
     const muted = '#becad3';
-    const accent = '#8cddf2';
-    const gold = '#f6cd67';
+    const accent = '#7ee6fc';
     const dark = '#121a23';
     const setText = (size, weight = 400, color = muted) => {
       context.font = weight + ' ' + size + 'px ' + font;
@@ -687,10 +786,10 @@ async function saveCard(winner, score, voiceLine, ranking, reasons) {
     context.clip();
     context.drawImage(background,(900-bgWidth)/2,(690-bgHeight)/2,bgWidth,bgHeight);
     context.restore();
-    const portraitScale = Math.min(810 / portrait.width, 605 / portrait.height);
+    const portraitScale = Math.min(910 / portrait.width, 704 / portrait.height);
     const portraitWidth = portrait.width * portraitScale;
     const portraitHeight = portrait.height * portraitScale;
-    context.drawImage(portrait,(900-portraitWidth)/2,60+(605-portraitHeight)/2,portraitWidth,portraitHeight);
+    context.drawImage(portrait,(900-portraitWidth)/2,22+(676-portraitHeight)/2,portraitWidth,portraitHeight);
     const gradient = context.createLinearGradient(0,460,0,690);
     gradient.addColorStop(0,'#121a2300');
     gradient.addColorStop(1,dark);
@@ -702,21 +801,23 @@ async function saveCard(winner, score, voiceLine, ranking, reasons) {
     context.fillText('罗德岛入职档案 / 干员匹配',left,48);
     context.fillRect(left,619,5,85);
     setText(81,900,ink);
-    context.fillText(winner.name,left+18,688,530);
-    setText(45,800,gold);
+    context.fillText(winner.name,left+18,675,530);
+    context.font = '700 25px "Rhodes Display", sans-serif';
+    context.fillText(winner.code.toUpperCase(),left+20,710,530);
+    setText(48,800,accent);
     context.textAlign = 'right';
     context.fillText(score,right,661);
     setText(20,650,muted);
     context.fillText('匹配指数 / 100',right,694);
     context.textAlign = 'left';
 
-    let y = 756;
+    let y = 770;
+    setText(29,750,accent);
+    y = cardLines(context,'「' + voiceLine + '」',left,y,width,41) + 13;
     setText(31,700,ink);
     y = cardLines(context,winner.line,left,y,width,43) + 5;
     setText(25);
-    y = cardLines(context,winner.description,left,y,width,37) + 18;
-    setText(25,700,accent);
-    y = cardLines(context,'干员语音 · 「' + voiceLine + '」',left,y,width,37) + 30;
+    y = cardLines(context,winner.description,left,y,width,37) + 24;
 
     function section(title) {
       context.fillStyle = '#405360';
@@ -732,17 +833,13 @@ async function saveCard(winner, score, voiceLine, ranking, reasons) {
     y += 412;
 
     section('你和干员差在哪');
-    comparisonRows(ranking[0].totals,winner.profile).forEach(row => {
-      setText(24,750,ink);
-      context.fillText(row.label,left,y+20);
-      setText(23);
-      context.fillText('你 · ' + row.you,left+196,y+20,276);
-      context.fillText(winner.name + ' · ' + row.operator,left+475,y+20,312);
-      context.fillStyle = '#283a48';
-      context.fillRect(left,y+38,width,1);
-      y += 48;
-    });
-    y += 16;
+    const rows = comparisonRows(ranking[0].totals, winner.profile);
+    for (const [caption, row, explanation] of comparisonSummary(rows, winner.name)) {
+      setText(24,750,accent);
+      context.fillText(caption + ' / ' + row.label,left,y+20);
+      setText(24,400);
+      y = cardLines(context,explanation,left,y+57,width,34) + 10;
+    }
 
     section('最接近你的 5 位干员');
     ranking.slice(0,5).forEach((candidate,i) => {
@@ -751,7 +848,7 @@ async function saveCard(winner, score, voiceLine, ranking, reasons) {
       context.fillText(candidate.operator.name,left,y+25,182);
       context.fillStyle = '#293c49';
       context.fillRect(left+196,y+10,476,10);
-      context.fillStyle = i === 0 ? gold : accent;
+      context.fillStyle = i === 0 ? accent : '#8195a5';
       context.fillRect(left+196,y+10,476*Number(value)/100,10);
       setText(22,600);
       context.textAlign = 'right';
@@ -768,16 +865,20 @@ async function saveCard(winner, score, voiceLine, ranking, reasons) {
     });
     y += 14;
     section('分享测试');
-    setText(25,650,ink);
-    context.fillText('扫码打开罗德岛入职档案',left,y+27);
-    setText(20);
-    context.fillText('非官方同人测试 · 干员立绘 © 鹰角网络',left,y+73);
+    context.fillStyle = '#cae1eb';
+    context.fillRect(left,y,width,196);
+    context.fillStyle = '#2d5a73';
+    context.fillRect(left,y,6,196);
+    setText(26,800,'#142c3f');
+    context.fillText('扫码打开罗德岛入职档案',left+25,y+67,560);
+    setText(20,500,'#35546a');
+    context.fillText('非官方同人测试 · 干员立绘 © 鹰角网络',left+25,y+117,560);
     context.imageSmoothingEnabled = false;
-    context.drawImage(qrImage,right-164,y-16,164,164);
+    context.drawImage(qrImage,right-180,y+16,164,164);
 
     const image = document.createElement('canvas');
     image.width = canvas.width;
-    image.height = y+181;
+    image.height = y+219;
     image.getContext('2d').drawImage(canvas,0,0);
     const blob = await new Promise(resolve => image.toBlob(resolve,'image/png'));
     if (!blob) throw new Error('PNG encoding failed');
