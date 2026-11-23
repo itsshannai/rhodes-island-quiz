@@ -1,12 +1,14 @@
 # 罗德岛入职档案
 
-《明日方舟》非官方同人测试。24 道日常情境题，20 位干员。答题数据仅在浏览器内计算。
+《明日方舟》非官方同人测试。24 道日常情境题，28 位干员。答题数据仅在浏览器内计算。
 
 通过 [GitHub Pages](https://itsshannai.github.io/rhodes-island-quiz/) 试玩，或下载整个仓库后打开 `index.html`。
 
 ## 匹配规则
 
 每四题对应一个性格维度。每题给出四种反应，映射为 −3、−1、1 和 3。计算六维平均分后，与干员档案的手工设定做欧氏距离比较。匹配指数为 100 ×（1 − 距离 ÷ 理论最大距离）。相同距离为并列，主卡由英文代号打破并列。角色分值为娱乐向解读。
+
+结果页和结果长图标注干员的势力。归属采用[国服干员数据](https://github.com/Kengxxiao/ArknightsGameData/blob/master/zh_CN/gamedata/excel/character_table.json)中的公开势力，存在下属组织时一并显示。
 
 ## 素材
 
@@ -34,3 +36,11 @@
 - [艾雅法拉 · 精二立绘来源](https://raw.githubusercontent.com/Aceship/Arknight-Images/main/characters/char_180_amgoat_2.png)
 - [极境 · 精二立绘来源](https://raw.githubusercontent.com/Aceship/Arknight-Images/main/characters/char_401_elysm_2.png)
 - [德克萨斯 · 精二立绘来源](https://raw.githubusercontent.com/Aceship/Arknight-Images/main/characters/char_102_texas_2.png)
+- [凛冬 · 精二立绘来源](https://raw.githubusercontent.com/Aceship/Arknight-Images/main/characters/char_115_headbr_2.png)
+- [早露 · 精二立绘来源](https://raw.githubusercontent.com/Aceship/Arknight-Images/main/characters/char_197_poca_2.png)
+- [推进之王 · 精二立绘来源](https://raw.githubusercontent.com/Aceship/Arknight-Images/main/characters/char_112_siege_2.png)
+- [陈 · 精二立绘来源](https://raw.githubusercontent.com/Aceship/Arknight-Images/main/characters/char_010_chen_2.png)
+- [缪尔赛思 · 精二立绘来源](https://raw.githubusercontent.com/Aceship/Arknight-Images/main/characters/char_249_mlyss_2.png)
+- [W · 精二立绘来源](https://raw.githubusercontent.com/Aceship/Arknight-Images/main/characters/char_113_cqbw_2.png)
+- [温蒂 · 精二立绘来源](https://raw.githubusercontent.com/Aceship/Arknight-Images/main/characters/char_400_weedy_2.png)
+- [铃兰 · 精二立绘来源](https://raw.githubusercontent.com/Aceship/Arknight-Images/main/characters/char_358_lisa_2.png)
