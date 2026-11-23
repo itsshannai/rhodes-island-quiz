@@ -3,124 +3,160 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#151719">
+<meta name="theme-color" content="#111417">
 <meta name="description" content="24 道日常性格题，从 20 位明日方舟干员中找出和你最接近的一位。">
 <title>罗德岛入职档案 · 明日方舟同人测试</title>
 <style>
-:root{color-scheme:dark;--coal:#151719;--panel:#1d2023;--ink:#f1efe6;--dim:#bdc2c5;--line:#4c5053;--amber:#f8c761;--cool:#9dd1e4;--mono:ui-monospace,Consolas,monospace;font-family:system-ui,"PingFang SC","Microsoft YaHei",sans-serif}
+:root{color-scheme:dark;--bg:#111417;--sheet:#1a1e22;--sheet-dark:#14181b;--ink:#f4f2e9;--muted:#bec5ca;--line:#39434a;--signal:#f6cd67;--cyan:#8cddf2;--mono:ui-monospace,"SFMono-Regular",Consolas,monospace;font-family:system-ui,"PingFang SC","Microsoft YaHei",sans-serif}
 *{box-sizing:border-box}
-body{margin:0;background:var(--coal);color:var(--ink)}
-button{font:inherit;cursor:pointer}
-button:disabled{cursor:default;opacity:.43}
-button:focus-visible,a:focus-visible{outline:2px solid var(--amber);outline-offset:4px}
-h1,h2,p,figure{margin:0}
-a{color:var(--amber)}
+body{margin:0;background:var(--bg);color:var(--ink)}
+button,summary{font:inherit;cursor:pointer}
+button:disabled{cursor:default;opacity:.48}
+button:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+a{color:var(--cyan)}
+h1,h2,h3,p,figure{margin:0}
 [hidden]{display:none!important}
-.frame{width:min(100% - 48px,1100px);margin-inline:auto}
-.site-head,.site-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:20px}
-.site-head{border-bottom:1px solid var(--line)}
-.wordmark{display:flex;align-items:center;gap:12px;font-weight:810;letter-spacing:.045em}
-.emblem{width:13px;height:13px;background:var(--amber);transform:skewX(-22deg)}
-.caption,.counter,.identity{font:600 .86rem var(--mono);letter-spacing:.09em}
-.caption{color:var(--amber)}
-.site-foot{border-top:1px solid var(--line);color:var(--dim);font-size:.83rem;flex-wrap:wrap}
-main{padding-block:26px 48px;min-height:72vh}
-.intro{min-height:clamp(510px,62vw,650px);display:flex;align-items:end;position:relative;isolation:isolate;padding:clamp(22px,6vw,74px);border:1px solid var(--line);background:#22262b url('archive-background.webp') center/cover no-repeat}
-.intro::before,.hero::before{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(90deg,#101214f7 0%,#101214aa 45%,#1012141e 100%),linear-gradient(0deg,#101214a9,transparent 55%)}
-.intro::after,.hero::after{content:"";position:absolute;pointer-events:none;left:0;top:0;width:85px;height:5px;background:repeating-linear-gradient(120deg,var(--amber) 0 8px,#191d20 8px 14px)}
-.intro h1{font-size:clamp(2.75rem,8vw,6.6rem);line-height:1.04;letter-spacing:-.075em;margin:12px 0 20px}
-.intro p:not(.caption){max-width:34ch;line-height:1.75;color:#d9dcda}
-.intro small{display:block;margin-top:14px;color:var(--dim)}
-.action,.secondary{padding:12px 19px;min-height:48px;border:1px solid var(--amber);font-weight:760}
-.action{color:#181818;background:var(--amber)}
-.action:not(:disabled):hover{background:#ffe2a0}
-.secondary{color:var(--ink);background:transparent;border-color:var(--line)}
-.secondary:not(:disabled):hover{border-color:var(--amber)}
-.intro .action{margin-top:24px;min-width:170px}
-.quiz{width:min(100%,745px);margin:clamp(6px,5vw,48px) auto 0}
-.progress-row{display:flex;align-items:center;justify-content:space-between;color:var(--dim);margin-bottom:10px}
-.counter{color:var(--amber)}
+.frame{width:min(calc(100% - 56px),1100px);margin-inline:auto}
+.site-head{min-height:61px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line)}
+.wordmark{display:flex;align-items:center;gap:10px;font-size:.94rem;font-weight:790;letter-spacing:.06em}
+.emblem{width:16px;height:16px;border:1px solid var(--cyan);transform:rotate(45deg);display:grid;place-items:center}
+.emblem::after{content:"";height:6px;width:6px;background:var(--cyan)}
+.fan{font-size:.72rem;color:var(--muted);white-space:nowrap}
+.site-foot{display:flex;gap:8px 16px;flex-wrap:wrap;justify-content:space-between;border-top:1px solid var(--line);padding:16px 0 max(18px,env(safe-area-inset-bottom));color:var(--muted);font-size:.75rem}
+main{min-height:calc(100svh - 117px);padding:22px 0 46px}
+.action,.secondary{display:inline-grid;place-items:center;min-height:49px;padding:10px 19px;border:1px solid var(--line);font-weight:760}
+.action{background:var(--signal);border-color:var(--signal);color:#171b1d}
+.action:not(:disabled):hover{background:#ffe49e}
+.secondary{color:var(--ink);background:var(--sheet-dark)}
+.secondary:not(:disabled):hover{border-color:var(--cyan)}
+.kicker,.counter,.operator-code{font:650 .8rem var(--mono);letter-spacing:.11em}
+.kicker,.counter{color:var(--cyan)}
+.intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:clamp(540px,72svh,740px);border:1px solid var(--line);background:var(--sheet-dark)}
+.intro-art{position:relative;background:#24292e url('intake-hangar.webp') center 40%/cover no-repeat;min-height:100%;overflow:hidden}
+.intro-art::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.36;background:repeating-linear-gradient(0deg,transparent 0 47px,#91b8c529 47px 48px)}
+.intro-copy{display:flex;flex-direction:column;justify-content:end;align-items:start;padding:clamp(22px,6vw,63px)}
+.intro h1{font-size:clamp(2.45rem,6.4vw,5.6rem);font-weight:850;line-height:1.08;letter-spacing:-.075em;margin:13px 0 14px}
+.intro .lead{max-width:36ch;color:var(--muted);line-height:1.68}
+.intro .action{min-width:185px;margin-top:25px}
+.intro small{color:var(--muted);margin-top:12px}
+.quiz{width:min(100%,670px);margin:clamp(0px,4vw,38px) auto 0;min-height:calc(100svh - 151px);display:flex;flex-direction:column}
+.progress-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;color:var(--muted)}
 progress{appearance:none;width:100%;height:5px;border:0;display:block;background:var(--line)}
 progress::-webkit-progress-bar{background:var(--line)}
-progress::-webkit-progress-value{background:var(--amber)}
-progress::-moz-progress-bar{background:var(--amber)}
-fieldset{padding:0;border:0;margin:25px 0 0;min-width:0}
-legend{padding:0;font-size:clamp(1.36rem,4vw,2.2rem);font-weight:770;line-height:1.38;margin-bottom:18px}
+progress::-webkit-progress-value{background:var(--cyan)}
+progress::-moz-progress-bar{background:var(--cyan)}
+.quiz form{display:flex;flex:1;flex-direction:column}
+fieldset{padding:0;border:0;margin:24px 0 16px;min-width:0}
+legend{padding:0;margin-bottom:16px;font-size:clamp(1.37rem,4.7vw,2.21rem);font-weight:770;line-height:1.4}
 legend:focus,h1:focus{outline:none}
-.choice{display:flex;gap:13px;align-items:center;min-height:56px;padding:12px 16px;margin-block:9px;cursor:pointer;background:var(--panel);border:1px solid var(--line);line-height:1.55}
-.choice:hover,.choice:has(input:checked){border-color:var(--amber)}
-.choice:has(input:checked){background:#342c1d}
-.choice input{accent-color:var(--amber);width:17px;height:17px;flex:0 0 17px}
-.controls{display:flex;justify-content:space-between;gap:12px;margin-top:23px;flex-wrap:wrap}
-.hero{min-height:clamp(390px,54vw,580px);position:relative;isolation:isolate;overflow:hidden;border:1px solid var(--line);display:grid;align-items:end;padding:clamp(22px,5vw,55px);background:#242a2e url('archive-background.webp') center/cover no-repeat}
-.hero::before{z-index:0;background:linear-gradient(90deg,#131517fa 0%,#131517d3 34%,transparent 78%)}
-.hero .photo{position:absolute;width:62%;height:98%;bottom:0;right:1%;object-fit:contain;object-position:right bottom;filter:drop-shadow(0 12px 18px #0009)}
-.hero-text{z-index:1;position:relative;width:min(52%,490px);text-shadow:0 2px 12px #111c}
-.hero h1{margin:8px 0 2px;font-size:clamp(3.2rem,9vw,7.4rem);line-height:1;letter-spacing:-.08em;overflow-wrap:anywhere}
-.identity{color:var(--dim);text-transform:uppercase}
-.quote{font-size:clamp(1.1rem,3vw,1.55rem);font-weight:700;margin-top:20px}
-.description{font-size:1rem;color:#e1dfd6;line-height:1.72;margin-top:10px}
-.match{margin-top:20px;display:inline-flex;gap:9px;align-items:baseline;color:var(--amber);padding-top:11px;border-top:2px solid var(--amber)}
-.match strong{font-size:2.2rem;line-height:1;font-family:var(--mono)}
-.match span{font-size:.86rem;font-weight:700}
-.data-grid{display:grid;gap:14px;grid-template-columns:1fr 1fr;margin-top:16px}
-.panel{background:var(--panel);border:1px solid var(--line);padding:clamp(17px,3vw,29px);min-width:0}
-.panel h2{font-size:1.15rem;margin-bottom:13px}
-.radar{display:block;width:min(100%,420px);height:auto;margin-inline:auto;overflow:visible}
-.radar text{fill:var(--dim);font-size:12px;font-family:system-ui,sans-serif}
-.radar .grid{fill:none;stroke:#5b6166;stroke-width:1}
-.radar .axis{stroke:#4c5256;stroke-width:1}
-.radar .you{fill:#f8c76129;stroke:var(--amber);stroke-width:2.2;stroke-linejoin:round}
-.radar .operator{fill:#9dd1e414;stroke:var(--cool);stroke-width:2;stroke-dasharray:5 4;stroke-linejoin:round}
-.key{display:flex;gap:16px;flex-wrap:wrap;color:var(--dim);font-size:.85rem;margin-top:8px}
-.key span::before{content:"";display:inline-block;width:12px;height:3px;margin-right:6px;vertical-align:middle;background:var(--amber)}
-.key span+span::before{background:var(--cool)}
-.traitlist{display:grid;gap:12px}
-.trait-head,.poles{display:flex;justify-content:space-between;gap:6px}
-.trait-head{font-size:.86rem}
-.trait-head output{color:var(--dim);font:600 .76rem var(--mono)}
-.poles{font-size:.73rem;color:var(--dim);margin-top:4px}
-.axis-bar{position:relative;height:5px;background:#4b5055;margin-top:8px}
-.axis-bar::before{content:"";height:9px;top:-2px;left:50%;width:1px;background:#b2b5b8;position:absolute}
-.pin{position:absolute;top:50%;height:9px;width:9px;border-radius:50%;transform:translate(-50%,-50%);background:var(--amber);z-index:1}
-.pin.operator{border-radius:0;transform:translate(-50%,-50%) rotate(45deg);background:var(--cool);z-index:0;width:12px;height:12px}
-.rank-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
-.rank-list li{display:grid;grid-template-columns:minmax(5em,auto) 1fr 3.1em;align-items:center;column-gap:10px;font-size:.9rem}
+.choice{display:flex;gap:12px;align-items:center;min-height:61px;margin-bottom:8px;padding:12px 14px;cursor:pointer;background:var(--sheet);border:1px solid var(--line);line-height:1.48}
+.choice:hover,.choice:has(input:checked){border-color:var(--cyan)}
+.choice:has(input:checked){background:#21343c;box-shadow:inset 3px 0 var(--cyan)}
+.choice input{margin:0;accent-color:var(--cyan);width:17px;height:17px;flex:0 0 17px}
+.controls{display:flex;gap:10px;align-items:center;justify-content:space-between}
+.quiz .controls{margin-top:auto;padding:10px 0 0}
+.quiz .action{min-width:min(58%,205px)}
+.hero{position:relative;display:grid;grid-template-columns:minmax(0,1.61fr) minmax(0,1fr);border:1px solid var(--line);overflow:hidden;background:var(--sheet-dark)}
+.stage{display:grid;place-items:center;position:relative;isolation:isolate;min-width:0;min-height:445px;overflow:hidden;background:radial-gradient(ellipse at 50% 36%,#35464b7a,#171e28d9 66%,#131920fa),url('archive-background.webp') center/cover no-repeat,#141a21}
+.stage::before{content:"";position:absolute;z-index:-1;inset:0;background:repeating-linear-gradient(90deg,transparent 0 47px,#98cede1b 47px 48px),repeating-linear-gradient(0deg,transparent 0 47px,#98cede1b 47px 48px);mask-image:radial-gradient(ellipse,#000,transparent 86%)}
+.stage::after{content:"";position:absolute;z-index:-1;inset:14px;border:1px solid #7d9ca439;pointer-events:none}
+.photo{display:block;width:100%;height:auto;max-height:76svh;min-height:360px;object-fit:contain;object-position:center;filter:drop-shadow(0 10px 12px #0007);padding:10px}
+.art-action{position:absolute;bottom:15px;right:15px;background:#11171de8;color:var(--ink);border:1px solid #8aa9b3a3;min-height:44px;padding:7px 11px;font-size:.77rem;font-weight:700}
+.hero-text{align-self:end;padding:clamp(20px,4vw,42px);min-width:0}
+.hero h1{font-size:clamp(3rem,7.4vw,6rem);line-height:1.04;letter-spacing:-.075em;overflow-wrap:anywhere;margin:7px 0 6px}
+.operator-code{display:block;color:var(--muted);text-transform:uppercase}
+.hero-copy{font-size:.95rem;color:var(--muted);line-height:1.66;margin-top:10px}
+.quote{font-size:1.16rem;line-height:1.45;font-weight:730;margin-top:18px}
+.match{display:flex;align-items:baseline;gap:8px;white-space:nowrap;margin-top:16px;color:var(--signal)}
+.match strong{font:750 2.05rem/1 var(--mono)}
+.match span{font-size:.76rem;color:var(--muted)}
+.hero-text .action{margin-top:19px;min-width:160px}
+.status{color:var(--muted);font-size:.8rem;margin-top:8px}
+.status:empty{display:none}
+.data-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:13px;margin-top:14px}
+.panel{min-width:0;padding:clamp(17px,3vw,26px);background:var(--sheet);border:1px solid var(--line)}
+.panel h2{font-size:1.16rem;margin-bottom:14px}
+.radar{display:block;width:min(100%,418px);height:auto;margin:0 auto;overflow:visible}
+.radar text{fill:var(--muted);font-size:12px;font-family:system-ui,sans-serif}
+.radar .grid{fill:none;stroke:#5b6970;stroke-width:1}
+.radar .axis{stroke:#4b5961;stroke-width:1}
+.radar .you{fill:#f6cd6734;stroke:var(--signal);stroke-width:2.2;stroke-linejoin:round}
+.radar .operator{fill:#8cddf212;stroke:var(--cyan);stroke-width:2;stroke-dasharray:5 4;stroke-linejoin:round}
+.key{display:flex;gap:12px 18px;flex-wrap:wrap;color:var(--muted);font-size:.79rem;margin-top:5px}
+.key span::before{content:"";display:inline-block;width:12px;height:3px;margin-right:6px;vertical-align:middle;background:var(--signal)}
+.key span+span::before{background:var(--cyan)}
+.insights{display:grid;gap:8px}
+.insight{background:var(--sheet-dark);border-left:2px solid var(--line);padding:11px 12px}
+.insight:first-child{border-color:var(--cyan)}
+.insight h3{font-size:.94rem;line-height:1.4}
+.insight h3 span{color:var(--cyan);font-size:.74rem;margin-right:8px}
+.insight p{color:var(--muted);font-size:.87rem;line-height:1.55;margin-top:5px}
+.more-traits{margin-top:13px}
+.more-traits summary{padding:10px 0;min-height:43px;color:var(--cyan);font-size:.88rem}
+.traitlist{display:grid;gap:10px;border-top:1px solid var(--line);padding-top:10px}
+.trait{font-size:.82rem;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.trait:last-child{border-bottom:0}
+.trait p{color:var(--muted);margin-top:3px;line-height:1.55}
+.rank-list{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+.rank-list li{display:grid;grid-template-columns:minmax(5.2em,auto) 1fr 3.3em;align-items:center;gap:9px;font-size:.87rem}
 .rank-list li strong{font:650 .84rem var(--mono);text-align:right}
-.rank-line{height:7px;background:#444b50}
-.rank-line i{display:block;height:100%;background:#80929b}
-.rank-list li:first-child .rank-line i{background:var(--amber)}
-.note,.basis,.evidence li{color:var(--dim);line-height:1.65}
-.note{font-size:.8rem;margin-top:14px}
-.evidence ol{padding-left:1.15rem;margin:0 0 10px}
+.rank-line{height:6px;background:#42515a}
+.rank-line i{display:block;height:100%;background:#7c98a5}
+.rank-list li:first-child .rank-line i{background:var(--signal)}
+.note,.basis,.evidence li{color:var(--muted);line-height:1.65}
+.note{font-size:.78rem;margin-top:11px}
+.evidence ol{padding-left:1.15rem;margin:0 0 9px}
+.evidence li{font-size:.87rem}
 .evidence li+li{margin-top:6px}
 .evidence strong{color:var(--ink)}
-.basis{font-size:.9rem}
-.status{min-height:1.4em;margin-top:10px;color:var(--dim)}
+.basis{font-size:.84rem}
+.result-controls{justify-content:flex-end;margin-top:15px}
+dialog{width:min(calc(100% - 22px),980px);padding:14px;border:1px solid var(--line);background:#131a20;color:var(--ink);overflow:auto;max-height:92svh}
+dialog::backdrop{background:#080a0bdc}
+dialog .dialog-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+dialog h2{font-size:1rem}
+dialog .dialog-art{display:block;width:100%;height:74svh;object-fit:contain}
 @media(max-width:680px){
   .frame{width:calc(100% - 28px)}
-  .site-head,.site-foot{padding-block:15px}
-  .intro{min-height:510px;background-position:63% center}
-  .intro::before{background:linear-gradient(0deg,#101214fc 0%,#101214d5 41%,#10121416 100%)}
-  .hero{min-height:560px;padding:20px}
-  .hero .photo{width:100%;height:76%;top:0;right:0;object-position:center top}
-  .hero::before{z-index:1;background:linear-gradient(0deg,#131517 0%,#131517f7 25%,#13151783 45%,transparent 74%)}
-  .hero-text{width:100%;z-index:2}
-  .hero h1{font-size:clamp(2.9rem,14vw,5rem)}
-  .quote{margin-top:12px}
-  .match{margin-top:13px}
+  .site-head{min-height:51px}
+  main{padding:12px 0 24px}
+  .intro{position:relative;display:grid;grid-template-columns:1fr;min-height:min(720px,max(525px,calc(100svh - 120px)));align-items:end;isolation:isolate;overflow:hidden}
+  .intro-art{position:absolute;z-index:-2;inset:0;background-position:center 34%}
+  .intro::after{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(0deg,#101417fa 0%,#101417ed 21%,#10141752 58%,#1014170a 84%);pointer-events:none}
+  .intro-copy{padding:18px 20px 21px}
+  .intro h1{font-size:clamp(2.42rem,11.2vw,4.3rem);margin:10px 0}
+  .intro .lead{font-size:.91rem}
+  .intro .action{margin-top:18px;width:100%}
+  .intro small{margin-top:9px;font-size:.72rem}
+  .quiz{min-height:calc(100svh - 94px)}
+  .quiz .controls{background:var(--bg);position:sticky;bottom:0;padding-bottom:max(9px,env(safe-area-inset-bottom));box-shadow:0 -7px 18px #111417d9}
+  .hero{display:block}
+  .stage{min-height:0;height:clamp(292px,50svh,550px)}
+  .photo{position:absolute;inset:0;height:100%;max-height:none;min-height:0;padding:2px 1px 7px}
+  .art-action{bottom:13px;right:13px}
+  .hero-text{padding:17px 17px 18px;border-top:1px solid var(--line)}
+  .hero h1{font-size:clamp(2.75rem,12vw,4.8rem)}
+  .hero-top{display:flex;justify-content:space-between;gap:8px;align-items:center}
+  .match{margin-top:0;gap:4px;flex-direction:column;align-items:end}
+  .match strong{font-size:1.65rem}
+  .match span{font-size:.65rem}
+  .quote{margin-top:12px;font-size:1.04rem}
+  .hero-copy{margin-top:6px;font-size:.89rem}
+  .hero-text .action{margin-top:13px;width:100%}
   .data-grid{grid-template-columns:1fr}
+  .comparison{order:-1}
 }
 </style>
 </head>
 <body>
-<header class="frame site-head"><span class="wordmark"><i class="emblem" aria-hidden="true"></i>罗德岛入职档案</span></header>
+<header class="frame site-head"><span class="wordmark"><i class="emblem" aria-hidden="true"></i>罗德岛入职档案</span><span class="fan">非官方同人测试</span></header>
 <main class="frame">
   <section class="intro" id="intro">
-    <div>
-      <p class="caption">RHODES ISLAND / PERSONNEL FILE</p>
+    <div class="intro-art" aria-hidden="true"></div>
+    <div class="intro-copy">
+      <p class="kicker">RHODES ISLAND / INTAKE</p>
       <h1>你最像哪位<br>罗德岛干员？</h1>
-      <p>从一次深夜聊天，到一趟临时改道的旅行。选你真的会做的事，看看你和谁最像。</p>
+      <p class="lead">从一次深夜聊天，到一趟临时改道的旅行。选你真的会做的事，看看你和谁最像。</p>
       <button type="button" class="action" id="start">开始测试</button>
       <small>24 道情境题 · 约 4 分钟 · 20 位干员</small>
     </div>
@@ -136,7 +172,7 @@ legend:focus,h1:focus{outline:none}
   <section class="results" id="results" hidden></section>
   <noscript>请启用 JavaScript 后开始测试。</noscript>
 </main>
-<footer class="frame site-foot"><span>明日方舟非官方同人测试 · 娱乐用途</span><span>干员立绘 © 鹰角网络 · 答题在本机处理</span></footer>
+<footer class="frame site-foot"><span>仅供娱乐 · 答题在本机处理</span><span>干员立绘 © 鹰角网络</span></footer>
 <script>
 const dimensions = [
   ['社交方式', '安静观察', '主动靠近'],
@@ -240,7 +276,8 @@ function showQuestion() {
     return label;
   });
   get('choices').replaceChildren(...labels);
-  get('question').focus();
+  get('question').focus({preventScroll:true});
+  window.scrollTo(0, 0);
 }
 
 function explainMatch(answers, winner, runner) {
@@ -254,7 +291,7 @@ function explainMatch(answers, winner, runner) {
   return [ranked[0], ranked.find(item => item.dimension !== ranked[0].dimension)];
 }
 
-const portraitFile = operator => 'operator-' + String(operators.indexOf(operator) + 1).padStart(2, '0') + '.webp';
+const portraitFile = operator => 'operator-' + String(operators.indexOf(operator) + 1).padStart(2, '0') + '.webp?v=elite2';
 const asPercent = value => (value + 12) * 100 / 24;
 const matchIndex = candidate => (100 * (1 - Math.sqrt(candidate.distance / (dimensions.length * 24 ** 2)))).toFixed(1);
 
@@ -282,16 +319,48 @@ function radarChart(totals, profile, name) {
   </svg>`;
 }
 
-function traitRows(totals, profile) {
-  return dimensions.map(([label, first, last], i) => {
-    const userValue = asPercent(totals[i]);
-    const operatorValue = asPercent(profile[i] * 4);
-    return `<div class="trait"><div class="trait-head"><strong>${label}</strong>
-      <output>你 ${Math.round(userValue)} · 干员 ${Math.round(operatorValue)}</output></div>
-      <div class="axis-bar" aria-hidden="true"><i class="pin operator" style="left:${operatorValue}%"></i>
-      <i class="pin" style="left:${userValue}%"></i></div>
-      <div class="poles"><span>${first}</span><span>${last}</span></div></div>`;
-  }).join('');
+function comparisonRows(totals, profile) {
+  const describe = (value, lower, upper) => value < -2 ? lower : value > 2 ? upper : '视情况而定';
+  return dimensions.map(([label, lower, upper], i) => {
+    const operatorValue = profile[i] * 4;
+    return {
+      label,
+      you: describe(totals[i], lower, upper),
+      operator: describe(operatorValue, lower, upper),
+      gap: Math.abs(totals[i] - operatorValue),
+      stronger: Math.abs(totals[i]) > Math.abs(operatorValue) ? '你' : '干员',
+    };
+  });
+}
+
+function comparisonPanel(totals, profile, name) {
+  const rows = comparisonRows(totals, profile);
+  const byGap = [...rows].sort((a, b) => a.gap - b.gap);
+  const closest = byGap[0];
+  const furthest = byGap.at(-1);
+  function describe(row) {
+    if (row.you !== row.operator) return '你的倾向是「' + row.you + '」，' + name + '的倾向是「' + row.operator + '」。';
+    if (row.you === '视情况而定') return '你们在这项都比较灵活，倾向接近中间。';
+    const degree = row === furthest && row.gap > 0 ? '，其中' + row.stronger + '的倾向更明显' : '';
+    return '你们都倾向「' + row.you + '」' + degree + '。';
+  }
+  const summary = [
+    ['最相近', closest, furthest.gap === 0 ? '六项答题倾向均与这份干员档案相符。' : describe(closest)],
+  ];
+  if (furthest.gap > 0) summary.push(['差异最大', furthest, describe(furthest)]);
+  return `
+    <section class="panel comparison">
+      <h2>你和干员差在哪</h2>
+      <div class="insights">${summary.map(([caption, row, explanation]) => `
+        <article class="insight"><h3><span>${caption}</span>${row.label}</h3><p>${explanation}</p></article>`
+      ).join('')}</div>
+      <details class="more-traits">
+        <summary>展开六项对照</summary>
+        <div class="traitlist">${rows.map(row => `<div class="trait">
+          <strong>${row.label}</strong><p>你 · ${row.you}<br>${name} · ${row.operator}</p></div>`
+        ).join('')}</div>
+      </details>
+    </section>`;
 }
 
 function showResults() {
@@ -307,27 +376,35 @@ function showResults() {
   // Interpolation uses only the fixed question bank and internal profiles.
   results.innerHTML = `
     <article class="hero">
-      <img class="photo" src="${portraitFile(winner)}" alt="${winner.name}干员立绘" width="760" height="960">
+      <figure class="stage">
+        <img class="photo" src="${portraitFile(winner)}" alt="${winner.name}精二立绘" decoding="async" fetchpriority="high">
+        <button class="art-action" type="button" id="open-art">查看完整立绘</button>
+      </figure>
       <div class="hero-text">
-        <p class="caption">入职档案 / 最接近的干员</p>
-        <h1 id="result-title" tabindex="-1">${winner.name}</h1>
-        <p class="identity">${winner.code}</p>
+        <div class="hero-top">
+          <div><p class="kicker">最接近的干员</p>
+          <h1 id="result-title" tabindex="-1">${winner.name}</h1>
+          <p class="operator-code">${winner.code}</p></div>
+          <div class="match"><strong>${score}</strong><span>匹配指数 / 100</span></div>
+        </div>
         <p class="quote">${winner.line}</p>
-        <p class="description">${winner.description}</p>
-        <div class="match"><strong>${score}</strong><span>匹配指数 / 100</span></div>
+        <p class="hero-copy">${winner.description}</p>
+        <button type="button" class="action" id="save">保存图文结果卡（PNG）</button>
+        <p class="status" id="status" role="status"></p>
       </div>
     </article>
+    <dialog id="art-dialog" aria-labelledby="art-title">
+      <div class="dialog-head"><h2 id="art-title">${winner.name} · 精二立绘</h2>
+        <form method="dialog"><button type="submit" class="secondary">关闭</button></form></div>
+      <img class="dialog-art" alt="${winner.name}精二立绘">
+    </dialog>
     <div class="data-grid">
       <section class="panel">
         <h2>六维性格雷达</h2>
         ${radarChart(first.totals, winner.profile, winner.name)}
         <p class="key"><span>你的答题倾向</span><span>${winner.name}的档案倾向</span></p>
       </section>
-      <section class="panel">
-        <h2>你和干员差在哪</h2>
-        <div class="traitlist">${traitRows(first.totals, winner.profile)}</div>
-        <p class="note">两端是不同的相处方式。越靠右，越偏向右侧描述。</p>
-      </section>
+      ${comparisonPanel(first.totals, winner.profile, winner.name)}
       <section class="panel">
         <h2>最接近你的 5 位干员</h2>
         <ol class="rank-list">${ranking.slice(0,5).map(candidate => {
@@ -343,11 +420,14 @@ function showResults() {
         <p class="basis">${winner.basis} <a href="${winner.source}" target="_blank" rel="noreferrer">查看 PRTS 干员档案</a></p>
       </section>
     </div>
-    <div class="controls">
-      <button type="button" class="action" id="save">保存图文结果卡（PNG）</button>
+    <div class="controls result-controls">
       <button type="button" class="secondary" id="restart">重新测试</button>
-    </div>
-    <p class="status" id="status" role="status"></p>`;
+    </div>`;
+  get('open-art').addEventListener('click', () => {
+    const dialog = get('art-dialog');
+    dialog.querySelector('img').src = portraitFile(winner);
+    dialog.showModal();
+  });
   get('save').addEventListener('click', () => saveCard(winner, score));
   get('restart').addEventListener('click', start);
   get('result-title').focus();
