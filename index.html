@@ -7,9 +7,14 @@
 <meta name="description" content="24 道日常性格题，从 20 位明日方舟干员中找出和你最接近的一位。">
 <title>罗德岛入职档案 · 明日方舟同人测试</title>
 <style>
-:root{color-scheme:dark;--bg:#111417;--sheet:#1a1e22;--sheet-dark:#14181b;--ink:#f4f2e9;--muted:#bec5ca;--line:#39434a;--signal:#f6cd67;--cyan:#8cddf2;--mono:ui-monospace,"SFMono-Regular",Consolas,monospace;font-family:system-ui,"PingFang SC","Microsoft YaHei",sans-serif}
+@font-face{font-family:Rhodes Sans;src:url('rhodes-sans.woff2') format('woff2');font-weight:100 900;font-display:swap}
+@font-face{font-family:Rhodes Serif;src:url('rhodes-serif.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:Rhodes Display;src:url('rhodes-display.woff2') format('woff2');font-weight:600 700;font-display:swap}
+
+:root{color-scheme:dark;--bg:#111417;--sheet:#1a1e22;--sheet-dark:#14181b;--ink:#f4f2e9;--muted:#bec5ca;--line:#39434a;--signal:#f6cd67;--cyan:#8cddf2;--mono:"Rhodes Display",ui-monospace,Consolas,monospace;font-family:"Rhodes Sans","PingFang SC","Microsoft YaHei",sans-serif}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink)}
+body{margin:0;background:#111920;color:var(--ink)}
+body::before{content:"";position:fixed;inset:-18px;z-index:-1;pointer-events:none;background:linear-gradient(135deg,#101924af,#0f171fce),url('intake-prism.webp') center 29%/cover;filter:blur(17px)}
 button,summary{font:inherit;cursor:pointer}
 button:disabled{cursor:default;opacity:.48}
 button:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
@@ -32,11 +37,11 @@ main{min-height:calc(100svh - 117px);padding:22px 0 46px}
 .kicker,.counter,.operator-code{font:650 .8rem var(--mono);letter-spacing:.11em}
 .kicker,.counter{color:var(--cyan)}
 .intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:clamp(540px,72svh,740px);border:1px solid var(--line);background:var(--sheet-dark)}
-.intro-art{position:relative;min-height:100%;overflow:hidden;background:#253344 url('intake-reception.webp') center 44%/cover no-repeat}
+.intro-art{position:relative;min-height:100%;overflow:hidden;background:#253344 url('intake-prism.webp') center 40%/cover no-repeat}
 .intro-art::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,#111820dd,transparent 32%)}
-.intake-amiya{position:absolute;top:4%;left:53%;width:min(82%,370px);height:auto;transform:translateX(-50%);filter:drop-shadow(-7px 7px 16px #162432a6)}
+.intake-amiya{position:absolute;top:3%;left:50%;width:min(112%,660px);height:auto;transform:translateX(-50%);filter:drop-shadow(2px 9px 13px #10212ea0)}
 .intro-copy{display:flex;flex-direction:column;justify-content:end;align-items:start;padding:clamp(22px,6vw,63px)}
-.intro h1{font-size:clamp(2.45rem,6.4vw,5.6rem);font-weight:850;line-height:1.08;letter-spacing:-.075em;margin:13px 0 14px}
+.intro h1{font-family:"Rhodes Serif","Songti SC",serif;font-size:clamp(2.45rem,6.4vw,5.6rem);font-weight:700;line-height:1.15;letter-spacing:-.06em;margin:13px 0 14px}
 .intro .lead{max-width:36ch;color:var(--muted);line-height:1.68}
 .intro .action{min-width:185px;margin-top:25px}
 .intro small{color:var(--muted);margin-top:12px}
@@ -50,7 +55,7 @@ progress::-moz-progress-bar{background:var(--cyan)}
 fieldset{padding:0;border:0;margin:24px 0 16px;min-width:0}
 legend{padding:0;margin-bottom:16px;font-size:clamp(1.37rem,4.7vw,2.21rem);font-weight:770;line-height:1.4}
 legend:focus,h1:focus{outline:none}
-.choice{display:flex;gap:12px;align-items:center;min-height:61px;margin-bottom:8px;padding:12px 14px;cursor:pointer;background:var(--sheet);border:1px solid var(--line);line-height:1.48}
+.choice{display:flex;gap:12px;align-items:center;min-height:61px;margin-bottom:8px;padding:12px 14px;cursor:pointer;background:#16212ce3;border:1px solid #526473;line-height:1.48}
 .choice:hover,.choice:has(input:checked){border-color:var(--cyan)}
 .choice:has(input:checked){background:#21343c;box-shadow:inset 3px 0 var(--cyan)}
 .choice input{margin:0;accent-color:var(--cyan);width:17px;height:17px;flex:0 0 17px}
@@ -78,7 +83,7 @@ legend:focus,h1:focus{outline:none}
 .panel{min-width:0;padding:clamp(17px,3vw,26px);background:var(--sheet);border:1px solid var(--line)}
 .panel h2{font-size:1.16rem;margin-bottom:14px}
 .radar{display:block;width:min(100%,418px);height:auto;margin:0 auto;overflow:visible}
-.radar text{fill:var(--muted);font-size:12px;font-family:system-ui,sans-serif}
+.radar text{fill:var(--muted);font-size:12px;font-family:"Rhodes Sans",system-ui,sans-serif}
 .radar .grid{fill:none;stroke:#5b6970;stroke-width:1}
 .radar .axis{stroke:#4b5961;stroke-width:1}
 .radar .you{fill:#f6cd6734;stroke:var(--signal);stroke-width:2.2;stroke-linejoin:round}
@@ -124,15 +129,15 @@ dialog .dialog-art{display:block;width:100%;height:74svh;object-fit:contain}
   .intro{position:relative;display:grid;grid-template-columns:1fr;min-height:min(720px,max(525px,calc(100svh - 120px)));align-items:end;isolation:isolate;overflow:hidden}
   .intro-art{position:absolute;z-index:-2;inset:0;background-position:center 40%}
   .intro-art::after{display:none}
-  .intake-amiya{top:4%;left:54%;width:clamp(198px,65vw,350px)}
-  .intro::after{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(0deg,#10161d 0%,#10161df7 23%,#10161dc9 38%,#10161d38 59%,transparent 76%);pointer-events:none}
+  .intake-amiya{top:1%;left:51%;width:min(109%,600px)}
+  .intro::after{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(0deg,#10161d 0%,#10161df7 23%,#10161db8 48%,#10161d09 67%,transparent 78%);pointer-events:none}
   .intro-copy{padding:18px 20px 21px}
-  .intro h1{font-size:clamp(2.42rem,11.2vw,4.3rem);margin:10px 0}
+  .intro h1{font-size:clamp(2.28rem,10.15vw,4.3rem);margin:10px 0}
   .intro .lead{font-size:.91rem}
   .intro .action{margin-top:18px;width:100%}
   .intro small{margin-top:9px;font-size:.72rem}
   .quiz{min-height:calc(100svh - 94px)}
-  .quiz .controls{background:var(--bg);position:sticky;bottom:0;padding-bottom:max(9px,env(safe-area-inset-bottom));box-shadow:0 -7px 18px #111417d9}
+  .quiz .controls{background:#111920ed;position:sticky;bottom:0;padding-bottom:max(9px,env(safe-area-inset-bottom));box-shadow:0 -7px 18px #111417d9}
   .hero{display:block}
   .stage{min-height:0;height:clamp(292px,50svh,550px)}
   .photo{position:absolute;inset:0;height:100%;max-height:none;min-height:0;padding:2px 1px 7px}
@@ -149,13 +154,43 @@ dialog .dialog-art{display:block;width:100%;height:74svh;object-fit:contain}
   .data-grid{grid-template-columns:1fr}
   .comparison{order:-1}
 }
+/* The archive name plate belongs to the illustration stage. */
+.hero{grid-template-columns:minmax(0,1.65fr) minmax(0,1fr)}
+.stage{min-height:490px}
+.stage::after{z-index:1;inset:0;border:0;background:linear-gradient(0deg,#0c141dfb 1%,#0d1520c4 13%,#0c131939 28%,transparent 53%)}
+.stage .photo{padding:4px 3px 74px;min-height:490px;max-height:72svh;object-position:center 44%}
+.archive-plate{position:absolute;z-index:2;bottom:0;left:0;right:0;display:flex;gap:10px;justify-content:space-between;align-items:end;padding:18px 20px;border-top:1px solid #c2dbe252;background:#111c2663}
+.plate-name{min-width:0;padding-left:11px;border-left:3px solid var(--cyan)}
+.archive-plate h1{margin:2px 0;font-weight:900;font-size:clamp(2.25rem,6.8vw,5.35rem);line-height:1.04}
+.archive-plate .match{margin:0;display:grid;gap:3px;justify-items:end;color:var(--signal)}
+.art-action{z-index:3;top:12px;right:12px;bottom:auto}
+.hero-text{align-self:center}
+.hero-text .quote{margin-top:0}
+.voice{margin:18px 0 0;color:#edf1f4;padding:12px 13px;background:#111b25;border-left:2px solid var(--cyan)}
+.voice p{margin:0;font-size:1.04rem;font-weight:690;line-height:1.55}
+.voice cite{display:block;margin-top:7px;color:var(--muted);font-size:.76rem;font-style:normal}
+.voice cite a{text-underline-offset:2px}
+.share-panel{margin-top:14px;display:grid;grid-template-columns:96px minmax(0,1fr);gap:15px;align-items:center}
+.share-panel h2{margin-bottom:4px}
+.share-panel p{overflow-wrap:anywhere;font-size:.85rem;color:var(--muted);line-height:1.55}
+.share-code{height:auto;background:#fff;width:100%;display:block}
+.share-panel .secondary{margin-top:9px;min-height:44px}
+@media(max-width:680px){
+  .stage{min-height:0;height:clamp(330px,59svh,575px)}
+  .stage .photo{min-height:0;max-height:none;padding-bottom:65px;object-position:center 38%}
+  .archive-plate{padding:13px 14px}
+  .archive-plate h1{font-size:clamp(2.25rem,11.2vw,4.1rem)}
+  .art-action{top:9px;right:9px;bottom:auto}
+  .voice{margin-top:12px}
+  .share-panel{grid-template-columns:88px minmax(0,1fr)}
+}
 </style>
 </head>
 <body>
 <header class="frame site-head"><span class="wordmark"><i class="emblem" aria-hidden="true"></i>罗德岛入职档案</span><span class="fan">非官方同人测试</span></header>
 <main class="frame">
   <section class="intro" id="intro">
-    <div class="intro-art"><img class="intake-amiya" src="intake-amiya.webp" alt="身穿罗德岛制服的阿米娅" width="490" height="994" fetchpriority="high"></div>
+    <div class="intro-art"><img class="intake-amiya" src="intake-guard.webp" alt="近卫阿米娅的精二立绘，冷蓝剑光环绕人物" width="1240" height="1240" fetchpriority="high"></div>
     <div class="intro-copy">
       <p class="kicker">RHODES ISLAND / INTAKE</p>
       <h1>你最像哪位<br>罗德岛干员？</h1>
@@ -294,6 +329,90 @@ function explainMatch(answers, winner, runner) {
   return [ranked[0], ranked.find(item => item.dimension !== ranked[0].dimension)];
 }
 
+const voiceLines = [
+  [
+    "这么久没见，德克萨斯身边多了不少人嘛！",
+    "交谈3"
+  ],
+  [
+    "在这副假面之下，我认不出自己是谁。",
+    "交谈2"
+  ],
+  [
+    "苹果派！",
+    "作战中4"
+  ],
+  [
+    "您踩到我的衣服了……",
+    "信赖触摸"
+  ],
+  [
+    "速战速决，我的时间很宝贵。",
+    "行动出发"
+  ],
+  [
+    "欢迎回家，博士！",
+    "问候"
+  ],
+  [
+    "没什么变化啊，我的盟友。",
+    "问候"
+  ],
+  [
+    "把你种在土里，你重新长吧。",
+    "作战中4"
+  ],
+  [
+    "毁灭，同时治愈。",
+    "作战中1"
+  ],
+  [
+    "别回头，几句话而已。",
+    "问候"
+  ],
+  [
+    "……下雨了。",
+    "作战中3"
+  ],
+  [
+    "注意安全，博士。",
+    "问候"
+  ],
+  [
+    "日落飞锦绣长河，天地壮我行色。",
+    "行动出发"
+  ],
+  [
+    "你似乎更加适应自己的工作和职责了，更像一个领导者了。",
+    "信赖触摸"
+  ],
+  [
+    "音符坠入回忆，旋律响彻脑海。",
+    "行动出发"
+  ],
+  [
+    "比起人类，我对机器的理解更深。",
+    "交谈3"
+  ],
+  [
+    "没有留下痕迹的爆炸就不算爆炸哦。",
+    "交谈2"
+  ],
+  [
+    "前辈，早上好~",
+    "问候"
+  ],
+  [
+    "谁会！在战场上！拿旗子当武器啊！",
+    "作战中2"
+  ],
+  [
+    "我们的工作是搬运生命和死亡。",
+    "交谈2"
+  ]
+];
+const shareUrl = "https://itsshannai.github.io/rhodes-island-quiz/";
+
 const portraitFile = operator => 'operator-' + String(operators.indexOf(operator) + 1).padStart(2, '0') + '.webp?v=elite2';
 const asPercent = value => (value + 12) * 100 / 24;
 const matchIndex = candidate => (100 * (1 - Math.sqrt(candidate.distance / (dimensions.length * 24 ** 2)))).toFixed(1);
@@ -370,6 +489,7 @@ function showResults() {
   const ranking = rankOperators(answers);
   const [first, second] = ranking;
   const winner = first.operator;
+  const [voiceLine, voiceTitle] = voiceLines[operators.indexOf(winner)];
   const reasons = explainMatch(answers, winner, second.operator);
   const score = matchIndex(first);
   const tied = first.distance === second.distance;
@@ -382,16 +502,20 @@ function showResults() {
       <figure class="stage">
         <img class="photo" src="${portraitFile(winner)}" alt="${winner.name}精二立绘" decoding="async" fetchpriority="high">
         <button class="art-action" type="button" id="open-art">查看完整立绘</button>
-      </figure>
-      <div class="hero-text">
-        <div class="hero-top">
-          <div><p class="kicker">最接近的干员</p>
-          <h1 id="result-title" tabindex="-1">${winner.name}</h1>
-          <p class="operator-code">${winner.code}</p></div>
+        <div class="archive-plate">
+          <div class="plate-name"><p class="kicker">最接近的干员</p>
+            <h1 id="result-title" tabindex="-1">${winner.name}</h1>
+            <p class="operator-code">${winner.code}</p>
+          </div>
           <div class="match"><strong>${score}</strong><span>匹配指数 / 100</span></div>
         </div>
+      </figure>
+      <div class="hero-text">
         <p class="quote">${winner.line}</p>
         <p class="hero-copy">${winner.description}</p>
+        <blockquote class="voice"><p>「${voiceLine}」</p>
+          <cite><a href="${winner.source}#语音记录" target="_blank" rel="noreferrer">干员语音 · ${voiceTitle}</a></cite>
+        </blockquote>
         <button type="button" class="action" id="save">保存图文结果卡（PNG）</button>
         <p class="status" id="status" role="status"></p>
       </div>
@@ -423,6 +547,13 @@ function showResults() {
         <p class="basis">${winner.basis} <a href="${winner.source}" target="_blank" rel="noreferrer">查看 PRTS 干员档案</a></p>
       </section>
     </div>
+    <section class="panel share-panel" aria-labelledby="share-heading">
+      <img class="share-code" src="quiz-share.png" alt="扫码打开罗德岛入职档案" width="328" height="328">
+      <div><h2 id="share-heading">分享测试</h2><p>扫码让朋友测一测像哪位干员。</p>
+        <button type="button" class="secondary" id="copy-quiz-link">复制测试链接</button>
+        <p class="status" id="share-status" role="status"></p>
+      </div>
+    </section>
     <div class="controls result-controls">
       <button type="button" class="secondary" id="restart">重新测试</button>
     </div>`;
@@ -431,7 +562,18 @@ function showResults() {
     dialog.querySelector('img').src = portraitFile(winner);
     dialog.showModal();
   });
-  get('save').addEventListener('click', () => saveCard(winner, score));
+  get('save').addEventListener('click', () => saveCard(winner, score, voiceLine));
+  get('copy-quiz-link').addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      get('share-status').textContent = '链接已复制';
+    } catch {
+      const link = document.createElement('a');
+      link.href = shareUrl;
+      link.textContent = shareUrl;
+      get('share-status').replaceChildren(link);
+    }
+  });
   get('restart').addEventListener('click', start);
   get('result-title').focus();
   window.scrollTo(0, 0);
@@ -459,23 +601,24 @@ function loadCardImage(source) {
   });
 }
 
-async function saveCard(winner, score) {
+async function saveCard(winner, score, voiceLine) {
   const button = get('save');
   const status = get('status');
   button.disabled = true;
   status.textContent = '正在生成结果卡…';
   try {
-    const [background, portrait] = await Promise.all([
+    const [background, portrait, qrImage] = await Promise.all([
       loadCardImage('archive-background.webp'),
       loadCardImage(portraitFile(winner)),
+      loadCardImage('quiz-share.png'),
     ]);
     const canvas = document.createElement('canvas');
     canvas.width = 900;
-    canvas.height = 1120;
+    canvas.height = 1250;
     const context = canvas.getContext('2d');
-    if (!context || !background || !portrait) throw new Error('Image unavailable');
+    if (!context || !background || !portrait || !qrImage) throw new Error('Image unavailable');
     context.fillStyle = '#151719';
-    context.fillRect(0,0,900,1120);
+    context.fillRect(0,0,900,1250);
     const scale = Math.max(900 / background.width, 710 / background.height);
     const bgWidth = background.width * scale;
     const bgHeight = background.height * scale;
@@ -492,7 +635,7 @@ async function saveCard(winner, score) {
     context.fillStyle = '#f8c761';
     context.fillRect(56,47,75,6);
     context.fillRect(0,780,900,2);
-    const font = 'system-ui, "PingFang SC", "Microsoft YaHei", sans-serif';
+    const font = '"Rhodes Sans", "PingFang SC", "Microsoft YaHei", sans-serif';
     context.font = '700 26px ' + font;
     context.fillText('罗德岛入职档案 / 干员匹配',56,95);
     context.fillText('匹配指数 ' + score + ' / 100',56,834);
@@ -505,7 +648,10 @@ async function saveCard(winner, score) {
     context.font = '26px ' + font;
     cardLines(context,winner.description,56,962,785,35);
     context.font = '20px ' + font;
-    context.fillText('非官方同人测试 · 干员立绘 © 鹰角网络',56,1090);
+    cardLines(context,'干员语音  「' + voiceLine + '」',56,1080,610,28);
+    context.imageSmoothingEnabled = false;
+    context.drawImage(qrImage,681,1055,164,164);
+    context.fillText('非官方同人测试 · 干员立绘 © 鹰角网络',56,1200);
     const blob = await new Promise(resolve => canvas.toBlob(resolve,'image/png'));
     if (!blob) throw new Error('PNG encoding failed');
     const url = URL.createObjectURL(blob);
