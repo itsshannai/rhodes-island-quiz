@@ -117,6 +117,7 @@ legend:focus,h1:focus{outline:none}
 .evidence strong{color:var(--ink)}
 .basis{font-size:.84rem}
 .result-controls{justify-content:flex-end;margin-top:15px}
+@media(max-width:680px){.result-controls .action{flex:1}}
 dialog{width:min(calc(100% - 22px),980px);padding:14px;border:1px solid var(--line);background:#131a20;color:var(--ink);overflow:auto;max-height:92svh}
 dialog::backdrop{background:#080a0bdc}
 dialog .dialog-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
@@ -516,8 +517,6 @@ function showResults() {
         <blockquote class="voice"><p>「${voiceLine}」</p>
           <cite><a href="${winner.source}#语音记录" target="_blank" rel="noreferrer">干员语音 · ${voiceTitle}</a></cite>
         </blockquote>
-        <button type="button" class="action" id="save">保存图文结果卡（PNG）</button>
-        <p class="status" id="status" role="status"></p>
       </div>
     </article>
     <dialog id="art-dialog" aria-labelledby="art-title">
@@ -556,13 +555,15 @@ function showResults() {
     </section>
     <div class="controls result-controls">
       <button type="button" class="secondary" id="restart">重新测试</button>
-    </div>`;
+      <button type="button" class="action" id="save">保存结果长图（PNG）</button>
+    </div>
+    <p class="status" id="status" role="status"></p>`;
   get('open-art').addEventListener('click', () => {
     const dialog = get('art-dialog');
     dialog.querySelector('img').src = portraitFile(winner);
     dialog.showModal();
   });
-  get('save').addEventListener('click', () => saveCard(winner, score, voiceLine));
+  get('save').addEventListener('click', () => saveCard(winner, score, voiceLine, ranking, reasons));
   get('copy-quiz-link').addEventListener('click', async () => {
     try {
       await navigator.clipboard.writeText(shareUrl);
@@ -590,6 +591,7 @@ function cardLines(context, content, x, y, maxWidth, lineHeight) {
     line += character;
   }
   context.fillText(line, x, y);
+  return y + lineHeight;
 }
 
 function loadCardImage(source) {
@@ -601,74 +603,200 @@ function loadCardImage(source) {
   });
 }
 
-async function saveCard(winner, score, voiceLine) {
+function drawCardRadar(context, totals, profile, y) {
+  const centerX = 450;
+  const centerY = y + 175;
+  const radius = 126;
+  const point = (axis, amount) => {
+    const angle = axis * Math.PI / 3 - Math.PI / 2;
+    return [centerX + Math.cos(angle) * radius * amount, centerY + Math.sin(angle) * radius * amount];
+  };
+  function polygon(values, stroke, fill) {
+    context.beginPath();
+    values.forEach((value, axis) => {
+      const [x, y] = point(axis, value);
+      if (axis === 0) context.moveTo(x, y);
+      else context.lineTo(x, y);
+    });
+    context.closePath();
+    if (fill) {
+      context.fillStyle = fill;
+      context.fill();
+    }
+    context.strokeStyle = stroke;
+    context.stroke();
+  }
+  [.25,.50,.75,1].forEach(value => polygon(dimensions.map(() => value), '#566571'));
+  polygon(totals.map(value => asPercent(value) / 100), '#f6cd67', '#f6cd6733');
+  context.setLineDash([8,6]);
+  polygon(profile.map(value => asPercent(value * 4) / 100), '#8cddf2');
+  context.setLineDash([]);
+  context.textAlign = 'center';
+  context.fillStyle = '#d4dde4';
+  dimensions.forEach(([label], axis) => {
+    const [x, y] = point(axis, 1.30);
+    context.fillText(label, x, y + 7);
+  });
+  context.fillStyle = '#f6cd67';
+  context.fillText('你的答题倾向', 326, y + 373);
+  context.fillStyle = '#8cddf2';
+  context.fillText('干员的档案倾向', 570, y + 373);
+  context.textAlign = 'left';
+}
+
+async function saveCard(winner, score, voiceLine, ranking, reasons) {
   const button = get('save');
   const status = get('status');
   button.disabled = true;
-  status.textContent = '正在生成结果卡…';
+  status.textContent = '正在生成结果长图…';
   try {
     const [background, portrait, qrImage] = await Promise.all([
       loadCardImage('archive-background.webp'),
       loadCardImage(portraitFile(winner)),
       loadCardImage('quiz-share.png'),
+      document.fonts.ready,
     ]);
     const canvas = document.createElement('canvas');
     canvas.width = 900;
-    canvas.height = 1250;
+    canvas.height = 3200;
     const context = canvas.getContext('2d');
     if (!context || !background || !portrait || !qrImage) throw new Error('Image unavailable');
-    context.fillStyle = '#151719';
-    context.fillRect(0,0,900,1250);
-    const scale = Math.max(900 / background.width, 710 / background.height);
-    const bgWidth = background.width * scale;
-    const bgHeight = background.height * scale;
-    context.drawImage(background,(900-bgWidth)/2,(710-bgHeight)/2,bgWidth,bgHeight);
-    const portraitScale = Math.min(700 / portrait.width, 690 / portrait.height);
+
+    const font = '"Rhodes Sans", "PingFang SC", "Microsoft YaHei", sans-serif';
+    const left = 56;
+    const right = 844;
+    const width = right - left;
+    const ink = '#f2f4f4';
+    const muted = '#becad3';
+    const accent = '#8cddf2';
+    const gold = '#f6cd67';
+    const dark = '#121a23';
+    const setText = (size, weight = 400, color = muted) => {
+      context.font = weight + ' ' + size + 'px ' + font;
+      context.fillStyle = color;
+    };
+    context.fillStyle = dark;
+    context.fillRect(0,0,900,canvas.height);
+
+    const bgScale = Math.max(900 / background.width, 690 / background.height);
+    const bgWidth = background.width * bgScale;
+    const bgHeight = background.height * bgScale;
+    context.save();
+    context.beginPath();
+    context.rect(0,0,900,690);
+    context.clip();
+    context.drawImage(background,(900-bgWidth)/2,(690-bgHeight)/2,bgWidth,bgHeight);
+    context.restore();
+    const portraitScale = Math.min(810 / portrait.width, 605 / portrait.height);
     const portraitWidth = portrait.width * portraitScale;
     const portraitHeight = portrait.height * portraitScale;
-    context.drawImage(portrait,(900-portraitWidth)/2,710-portraitHeight,portraitWidth,portraitHeight);
-    const gradient = context.createLinearGradient(0,435,0,780);
-    gradient.addColorStop(0,'#15171900');
-    gradient.addColorStop(1,'#151719');
+    context.drawImage(portrait,(900-portraitWidth)/2,60+(605-portraitHeight)/2,portraitWidth,portraitHeight);
+    const gradient = context.createLinearGradient(0,460,0,690);
+    gradient.addColorStop(0,'#121a2300');
+    gradient.addColorStop(1,dark);
     context.fillStyle = gradient;
-    context.fillRect(0,435,900,345);
-    context.fillStyle = '#f8c761';
-    context.fillRect(56,47,75,6);
-    context.fillRect(0,780,900,2);
-    const font = '"Rhodes Sans", "PingFang SC", "Microsoft YaHei", sans-serif';
-    context.font = '700 26px ' + font;
-    context.fillText('罗德岛入职档案 / 干员匹配',56,95);
-    context.fillText('匹配指数 ' + score + ' / 100',56,834);
-    context.fillStyle = '#f2efe6';
-    context.font = '800 91px ' + font;
-    context.fillText(winner.name,51,723,785);
-    context.font = '700 34px ' + font;
-    cardLines(context,winner.line,56,900,790,45);
-    context.fillStyle = '#bdc2c5';
-    context.font = '26px ' + font;
-    cardLines(context,winner.description,56,962,785,35);
-    context.font = '20px ' + font;
-    cardLines(context,'干员语音  「' + voiceLine + '」',56,1080,610,28);
+    context.fillRect(0,460,900,230);
+    context.fillStyle = '#121a23bb';
+    context.fillRect(0,0,900,77);
+    setText(27,700,accent);
+    context.fillText('罗德岛入职档案 / 干员匹配',left,48);
+    context.fillRect(left,619,5,85);
+    setText(81,900,ink);
+    context.fillText(winner.name,left+18,688,530);
+    setText(45,800,gold);
+    context.textAlign = 'right';
+    context.fillText(score,right,661);
+    setText(20,650,muted);
+    context.fillText('匹配指数 / 100',right,694);
+    context.textAlign = 'left';
+
+    let y = 756;
+    setText(31,700,ink);
+    y = cardLines(context,winner.line,left,y,width,43) + 5;
+    setText(25);
+    y = cardLines(context,winner.description,left,y,width,37) + 18;
+    setText(25,700,accent);
+    y = cardLines(context,'干员语音 · 「' + voiceLine + '」',left,y,width,37) + 30;
+
+    function section(title) {
+      context.fillStyle = '#405360';
+      context.fillRect(left,y,width,1);
+      y += 46;
+      setText(31,800,ink);
+      context.fillText(title,left,y);
+      y += 25;
+    }
+    section('六维性格雷达');
+    setText(24,600);
+    drawCardRadar(context,ranking[0].totals,winner.profile,y);
+    y += 412;
+
+    section('你和干员差在哪');
+    comparisonRows(ranking[0].totals,winner.profile).forEach(row => {
+      setText(24,750,ink);
+      context.fillText(row.label,left,y+20);
+      setText(23);
+      context.fillText('你 · ' + row.you,left+196,y+20,276);
+      context.fillText(winner.name + ' · ' + row.operator,left+475,y+20,312);
+      context.fillStyle = '#283a48';
+      context.fillRect(left,y+38,width,1);
+      y += 48;
+    });
+    y += 16;
+
+    section('最接近你的 5 位干员');
+    ranking.slice(0,5).forEach((candidate,i) => {
+      const value = matchIndex(candidate);
+      setText(24,700,ink);
+      context.fillText(candidate.operator.name,left,y+25,182);
+      context.fillStyle = '#293c49';
+      context.fillRect(left+196,y+10,476,10);
+      context.fillStyle = i === 0 ? gold : accent;
+      context.fillRect(left+196,y+10,476*Number(value)/100,10);
+      setText(22,600);
+      context.textAlign = 'right';
+      context.fillText(value,right,y+25);
+      context.textAlign = 'left';
+      y += 45;
+    });
+    y += 14;
+
+    section('哪些回答让你像 TA');
+    reasons.forEach(reason => {
+      setText(24,550);
+      y = cardLines(context,dimensions[reason.dimension][0]+' · '+reason.text,left,y+23,width,37) + 1;
+    });
+    y += 14;
+    section('分享测试');
+    setText(25,650,ink);
+    context.fillText('扫码打开罗德岛入职档案',left,y+27);
+    setText(20);
+    context.fillText('非官方同人测试 · 干员立绘 © 鹰角网络',left,y+73);
     context.imageSmoothingEnabled = false;
-    context.drawImage(qrImage,681,1055,164,164);
-    context.fillText('非官方同人测试 · 干员立绘 © 鹰角网络',56,1200);
-    const blob = await new Promise(resolve => canvas.toBlob(resolve,'image/png'));
+    context.drawImage(qrImage,right-164,y-16,164,164);
+
+    const image = document.createElement('canvas');
+    image.width = canvas.width;
+    image.height = y+181;
+    image.getContext('2d').drawImage(canvas,0,0);
+    const blob = await new Promise(resolve => image.toBlob(resolve,'image/png'));
     if (!blob) throw new Error('PNG encoding failed');
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = '罗德岛入职档案-' + winner.name + '.png';
+    link.download = '罗德岛入职档案-' + winner.name + '-结果长图.png';
     document.body.append(link);
     link.click();
     link.remove();
     setTimeout(() => URL.revokeObjectURL(url),60000);
-    status.textContent = '结果卡已生成，请查看浏览器下载。';
+    status.textContent = '结果长图已生成，请查看浏览器下载。';
   } catch {
-    status.textContent = '图片暂时无法导出，可以重试或截图保存。';
+    status.textContent = '结果长图生成失败，请点按钮重试。';
   } finally {
     button.disabled = false;
   }
 }
+
 function start() {
   answers.fill(null);
   current = 0;
