@@ -10,7 +10,7 @@
 
 ## 素材
 
-干员精二立绘版权属于鹰角网络及其相关权利人。人物行为解读参考 [PRTS Wiki](https://prts.wiki/)，结果页可查对应档案。首页机库和结果页的科幻场景由本项目生成。精二立绘按网页展示需求转为 WebP，保留透明背景。
+干员精二立绘版权属于鹰角网络及其相关权利人。人物行为解读参考 [PRTS Wiki](https://prts.wiki/)，结果页可查对应档案。首页接待区和结果页的科幻场景由本项目生成。首页使用 [阿米娅初始立绘](https://raw.githubusercontent.com/Aceship/Arknight-Images/main/characters/char_002_amiya_1.png)。精二立绘按网页展示需求转为 WebP，保留透明背景。
 
 - [拉普兰德 · 精二立绘来源](https://raw.githubusercontent.com/Aceship/Arknight-Images/main/characters/char_140_whitew_2.png)
 - [傀影 · 精二立绘来源](https://raw.githubusercontent.com/Aceship/Arknight-Images/main/characters/char_250_phatom_2.png)
